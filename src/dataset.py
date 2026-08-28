@@ -10,6 +10,7 @@ This matches the CIFAKE dataset's folder structure out of the box. For
 SID_Set / WildFake, reorganize them into this same real/ + fake/ layout
 before pointing training at them (see README).
 """
+import random
 from pathlib import Path
 from typing import Callable, Optional
 
@@ -25,6 +26,7 @@ class AigcImageDataset(Dataset):
         root_dir: str,
         augment: Optional[Callable] = None,
         preprocess: Optional[Callable] = None,
+        max_samples: Optional[int] = None,
     ):
         """
         root_dir: folder containing `real/` and `fake/` subfolders.
@@ -32,6 +34,9 @@ class AigcImageDataset(Dataset):
                  (e.g. RandomRobustnessAugment for training).
         preprocess: CLIP's preprocessing transform (resize/crop/normalize to
                     a tensor). Always applied last, after `augment`.
+        max_samples: if set, randomly cap the dataset to this many images
+                     total (balanced across real/fake). Handy for a fast
+                     smoke test before committing to a full training run.
         """
         self.samples = []
         root = Path(root_dir)
@@ -48,6 +53,10 @@ class AigcImageDataset(Dataset):
 
         if not self.samples:
             raise RuntimeError(f"No images found under {root_dir}/real or {root_dir}/fake")
+
+        if max_samples is not None and max_samples < len(self.samples):
+            random.shuffle(self.samples)
+            self.samples = self.samples[:max_samples]
 
         self.augment = augment
         self.preprocess = preprocess

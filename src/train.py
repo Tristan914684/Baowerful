@@ -68,6 +68,10 @@ def main():
                          help="Probability of applying a robustness augmentation per training image.")
     parser.add_argument("--num_workers", type=int, default=4)
     parser.add_argument("--out", default="results/head_best.pt")
+    parser.add_argument("--max_train_samples", type=int, default=None,
+                         help="Cap training set size for a quick smoke test.")
+    parser.add_argument("--max_val_samples", type=int, default=None,
+                         help="Cap validation set size for a quick smoke test.")
     args = parser.parse_args()
 
     device = get_device()
@@ -79,8 +83,11 @@ def main():
         args.train_dir,
         augment=RandomRobustnessAugment(p=args.aug_prob),
         preprocess=model.preprocess,
+        max_samples=args.max_train_samples,
     )
-    val_ds = AigcImageDataset(args.val_dir, augment=None, preprocess=model.preprocess)
+    val_ds = AigcImageDataset(
+        args.val_dir, augment=None, preprocess=model.preprocess, max_samples=args.max_val_samples
+    )
 
     train_loader = DataLoader(train_ds, batch_size=args.batch_size, shuffle=True, num_workers=args.num_workers)
     val_loader = DataLoader(val_ds, batch_size=args.batch_size, shuffle=False, num_workers=args.num_workers)
