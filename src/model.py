@@ -14,7 +14,7 @@ import open_clip
 
 
 class ClipAigcDetector(nn.Module):
-    def __init__(self, clip_model_name="ViT-B-32", pretrained="openai", hidden_dim=600_000, dropout=0.3):
+    def __init__(self, clip_model_name="ViT-B-32", pretrained="openai", hidden_dim=3_500_000, dropout=0.3):
         super().__init__()
         self.backbone, _, self.preprocess = open_clip.create_model_and_transforms(
             clip_model_name, pretrained=pretrained
