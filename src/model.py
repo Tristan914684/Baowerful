@@ -14,7 +14,8 @@ import open_clip
 
 
 class ClipAigcDetector(nn.Module):
-    def __init__(self, clip_model_name="ViT-B-32", pretrained="openai", hidden_dim=256, dropout=0.3):
+    def __init__(self, clip_model_name="ViT-B-32", pretrained="openai",
+                 hidden_dims=(32768, 16384, 8192, 4096, 2048, 1024, 512, 256, 128), dropout=0.3):
         super().__init__()
         self.backbone, _, self.preprocess = open_clip.create_model_and_transforms(
             clip_model_name, pretrained=pretrained
@@ -25,12 +26,15 @@ class ClipAigcDetector(nn.Module):
         self.backbone.eval()
 
         embed_dim = self.backbone.visual.output_dim
-        self.head = nn.Sequential(
-            nn.Linear(embed_dim, hidden_dim),
-            nn.GELU(),
-            nn.Dropout(dropout),
-            nn.Linear(hidden_dim, 1),
-        )
+
+        # Funnel through each size in hidden_dims, then down to 1 logit.
+        layers = []
+        in_dim = embed_dim
+        for h in hidden_dims:
+            layers += [nn.Linear(in_dim, h), nn.GELU(), nn.Dropout(dropout)]
+            in_dim = h
+        layers.append(nn.Linear(in_dim, 1))
+        self.head = nn.Sequential(*layers)
 
     def train(self, mode=True):
         # Keep the frozen backbone in eval mode even when the model as a
