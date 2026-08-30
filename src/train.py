@@ -1,5 +1,6 @@
 """
-Trains the classifier head on top of the frozen CLIP backbone.
+Trains the classifier head (+ handcrafted-feature fusion) on top of the
+frozen CLIP backbone.
 
 Usage:
     python -m src.train --train_dir data/train --val_dir data/val --epochs 10
@@ -37,9 +38,11 @@ def run_epoch(model, loader, device, optimizer=None):
 
     total_loss, correct, total = 0.0, 0, 0
     with torch.set_grad_enabled(is_train):
-        for images, labels, _ in tqdm(loader, leave=False):
-            images, labels = images.to(device), labels.to(device=device, dtype=torch.float32)
-            logits = model(images)
+        for images, handcrafted, labels, _ in tqdm(loader, leave=False):
+            images = images.to(device)
+            handcrafted = handcrafted.to(device)
+            labels = labels.to(device=device, dtype=torch.float32)
+            logits = model(images, handcrafted)
             loss = loss_fn(logits, labels)
 
             if is_train:
@@ -89,10 +92,14 @@ def main():
         args.val_dir, augment=None, preprocess=model.preprocess, max_samples=args.max_val_samples
     )
 
-    train_loader = DataLoader(train_ds, batch_size=args.batch_size, shuffle=True, num_workers=args.num_workers)
+    # drop_last=True: avoids a rare crash if the last batch of an epoch has
+    # exactly 1 sample -- BatchNorm1d (used to normalize handcrafted
+    # features) requires more than 1 value per channel in training mode.
+    train_loader = DataLoader(train_ds, batch_size=args.batch_size, shuffle=True,
+                               num_workers=args.num_workers, drop_last=True)
     val_loader = DataLoader(val_ds, batch_size=args.batch_size, shuffle=False, num_workers=args.num_workers)
 
-    optimizer = torch.optim.AdamW(model.head.parameters(), lr=args.lr)
+    optimizer = torch.optim.AdamW(model.trainable.parameters(), lr=args.lr)
 
     Path(args.out).parent.mkdir(parents=True, exist_ok=True)
     history = []
@@ -109,7 +116,7 @@ def main():
         if val_acc > best_val_acc:
             best_val_acc = val_acc
             torch.save({
-                "head_state_dict": model.head.state_dict(),
+                "trainable_state_dict": model.trainable.state_dict(),
                 "clip_model": args.clip_model,
                 "pretrained": args.pretrained,
                 "val_acc": val_acc,

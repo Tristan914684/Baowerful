@@ -9,13 +9,20 @@ Expects a directory laid out as:
 This matches the CIFAKE dataset's folder structure out of the box. For
 SID_Set / WildFake, reorganize them into this same real/ + fake/ layout
 before pointing training at them (see README).
+
+Each sample returns both the CLIP-preprocessed image tensor AND a small
+handcrafted forensic feature vector (see handcrafted_features.py), computed
+on the same (possibly augmented) image so the model can learn from both.
 """
 import random
 from pathlib import Path
 from typing import Callable, Optional
 
+import torch
 from PIL import Image
 from torch.utils.data import Dataset
+
+from src.handcrafted_features import compute_handcrafted_features
 
 IMG_EXTENSIONS = {".jpg", ".jpeg", ".png", ".bmp", ".webp"}
 
@@ -33,7 +40,8 @@ class AigcImageDataset(Dataset):
         augment: optional transform applied to the raw PIL image first
                  (e.g. RandomRobustnessAugment for training).
         preprocess: CLIP's preprocessing transform (resize/crop/normalize to
-                    a tensor). Always applied last, after `augment`.
+                    a tensor). Always applied last, after `augment` and
+                    after handcrafted feature extraction.
         max_samples: if set, randomly cap the dataset to this many images
                      total (balanced across real/fake). Handy for a fast
                      smoke test before committing to a full training run.
@@ -69,6 +77,7 @@ class AigcImageDataset(Dataset):
         img = Image.open(path).convert("RGB")
         if self.augment is not None:
             img = self.augment(img)
+        handcrafted = torch.from_numpy(compute_handcrafted_features(img))
         if self.preprocess is not None:
             img = self.preprocess(img)
-        return img, float(label), path
+        return img, handcrafted, float(label), path
