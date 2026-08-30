@@ -36,17 +36,26 @@ to capture signal CLIP doesn't naturally encode:
        scene-driven directions (radial_gradient_alignment). High values on
        either = a more "centric", single-source-like lighting pattern.
 
-All features are computed on a fixed-size grayscale version of the image so
-they're comparable across images of different original resolutions. Uses
-only numpy/PIL -- no extra dependencies (no scipy/cv2 needed).
+4. Channel saturation: real camera sensors (Bayer filter + demosaicing +
+   sensor noise + gamma/white-balance processing) essentially never
+   produce pixels that sit at an exact primary-color extreme -- e.g. a
+   channel reading exactly 0 or 255 with the other two channels also
+   pinned at an extreme. AI generators (and flat vector/UI-style content)
+   more readily produce mathematically "pure" colors. This is computed on
+   the RGB image directly, since converting to grayscale first would
+   destroy the per-channel information needed to detect it.
+
+All features are computed on a fixed-size version of the image so they're
+comparable across images of different original resolutions. Uses only
+numpy/PIL -- no extra dependencies (no scipy/cv2 needed).
 """
 import numpy as np
 from PIL import Image
 
-FEATURE_DIM = 6
+FEATURE_DIM = 7
 FEATURE_NAMES = [
     "grad_direction_entropy", "laplacian_var", "fft_highfreq_ratio", "grad_mag_std",
-    "radial_falloff_r2", "radial_gradient_alignment",
+    "radial_falloff_r2", "radial_gradient_alignment", "channel_saturation_ratio",
 ]
 
 _RESIZE = 224
@@ -56,6 +65,11 @@ _N_DIR_BINS = 16
 def _to_gray_array(img: Image.Image, size: int = _RESIZE) -> np.ndarray:
     gray = img.convert("L").resize((size, size), Image.BILINEAR)
     return np.asarray(gray, dtype=np.float32) / 255.0
+
+
+def _to_rgb_array(img: Image.Image, size: int = _RESIZE) -> np.ndarray:
+    rgb = img.convert("RGB").resize((size, size), Image.BILINEAR)
+    return np.asarray(rgb, dtype=np.float32) / 255.0  # (H, W, 3)
 
 
 def _conv3x3(arr: np.ndarray, kernel: np.ndarray) -> np.ndarray:
@@ -201,11 +215,29 @@ def _radial_gradient_alignment(gx: np.ndarray, gy: np.ndarray, cy: float, cx: fl
     return float(np.average(cos_sim[mask], weights=magnitude[mask]))
 
 
+_SATURATION_EPS = 2.0 / 255.0  # "near" 0/255 tolerance, in [0,1]-normalized units
+
+
+def _channel_saturation_ratio(rgb_arr: np.ndarray, eps: float = _SATURATION_EPS) -> float:
+    """
+    Fraction of pixels where ALL THREE channels sit at (or within `eps`
+    of) an extreme -- 0 or 255. Real camera photos almost never produce
+    this: Bayer demosaicing, sensor noise, and in-camera processing all
+    leave small nonzero spread across channels even in bright/saturated
+    regions. Flat, mathematically "pure" colors (pure red/green/blue,
+    pure black/white) show up far more in synthetic/rendered/AI content.
+    Fully vectorized (whole-array numpy ops) -- no per-pixel Python loop.
+    """
+    near_extreme = (rgb_arr <= eps) | (rgb_arr >= (1.0 - eps))  # (H, W, 3) bool
+    fully_saturated = near_extreme.all(axis=-1)                  # (H, W) bool
+    return float(fully_saturated.mean())
+
+
 def compute_handcrafted_features(img: Image.Image) -> np.ndarray:
     """
     Returns a length-FEATURE_DIM float32 numpy array:
         [grad_direction_entropy, laplacian_var, fft_highfreq_ratio, grad_mag_std,
-         radial_falloff_r2, radial_gradient_alignment]
+         radial_falloff_r2, radial_gradient_alignment, channel_saturation_ratio]
     """
     arr = _to_gray_array(img)
     gx, gy = _sobel_gradients(arr)
@@ -220,7 +252,11 @@ def compute_handcrafted_features(img: Image.Image) -> np.ndarray:
     radial_r2 = _radial_falloff_r2(arr, cy, cx)
     radial_alignment = _radial_gradient_alignment(gx, gy, cy, cx)
 
+    rgb_arr = _to_rgb_array(img)
+    saturation_ratio = _channel_saturation_ratio(rgb_arr)
+
     return np.array(
-        [direction_entropy, lap_var, fft_ratio, grad_mag_std, radial_r2, radial_alignment],
+        [direction_entropy, lap_var, fft_ratio, grad_mag_std,
+         radial_r2, radial_alignment, saturation_ratio],
         dtype=np.float32,
     )
