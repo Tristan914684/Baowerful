@@ -2,730 +2,730 @@
   "clean": {
     "false_positives": [
       {
-        "image_path": "data\\test\\real\\0181 (3).jpg",
-        "pred_prob": 0.5335087776184082
+        "image_path": "data\\test\\real\\0001 (3).jpg",
+        "pred_prob": 0.7459706664085388
       },
       {
-        "image_path": "data\\test\\real\\0028 (9).jpg",
-        "pred_prob": 0.7830808758735657
+        "image_path": "data\\test\\real\\0002 (10).jpg",
+        "pred_prob": 0.9145282506942749
       },
       {
-        "image_path": "data\\test\\real\\0883 (10).jpg",
-        "pred_prob": 0.7988982796669006
+        "image_path": "data\\test\\real\\0007.jpg",
+        "pred_prob": 0.8357554078102112
       },
       {
-        "image_path": "data\\test\\real\\0251 (2).jpg",
-        "pred_prob": 0.918781042098999
+        "image_path": "data\\test\\real\\0012.jpg",
+        "pred_prob": 0.6384866833686829
       },
       {
-        "image_path": "data\\test\\real\\0855 (10).jpg",
-        "pred_prob": 0.9899135828018188
+        "image_path": "data\\test\\real\\0013 (10).jpg",
+        "pred_prob": 0.613406240940094
       },
       {
-        "image_path": "data\\test\\real\\0395.jpg",
-        "pred_prob": 0.7206045985221863
+        "image_path": "data\\test\\real\\0013.jpg",
+        "pred_prob": 0.5900744199752808
       },
       {
-        "image_path": "data\\test\\real\\0517.jpg",
-        "pred_prob": 0.548369824886322
+        "image_path": "data\\test\\real\\0017 (10).jpg",
+        "pred_prob": 0.811115562915802
       },
       {
-        "image_path": "data\\test\\real\\0119 (6).jpg",
-        "pred_prob": 0.7383546233177185
+        "image_path": "data\\test\\real\\0017 (3).jpg",
+        "pred_prob": 0.9660653471946716
       },
       {
-        "image_path": "data\\test\\real\\0781 (10).jpg",
-        "pred_prob": 0.735451877117157
+        "image_path": "data\\test\\real\\0019 (9).jpg",
+        "pred_prob": 0.6360934972763062
       },
       {
-        "image_path": "data\\test\\real\\0632 (8).jpg",
-        "pred_prob": 0.7600162625312805
+        "image_path": "data\\test\\real\\0022.jpg",
+        "pred_prob": 0.6760305166244507
       }
     ],
     "false_negatives": [
       {
-        "image_path": "data\\test\\fake\\753 (9).jpg",
-        "pred_prob": 0.16416138410568237
+        "image_path": "data\\test\\fake\\10 (6).jpg",
+        "pred_prob": 0.0801842138171196
       },
       {
-        "image_path": "data\\test\\fake\\251 (4).jpg",
-        "pred_prob": 0.4845989942550659
+        "image_path": "data\\test\\fake\\101.jpg",
+        "pred_prob": 0.29852405190467834
       },
       {
-        "image_path": "data\\test\\fake\\680 (5).jpg",
-        "pred_prob": 0.054222822189331055
+        "image_path": "data\\test\\fake\\102 (2).jpg",
+        "pred_prob": 0.17773829400539398
       },
       {
-        "image_path": "data\\test\\fake\\803 (3).jpg",
-        "pred_prob": 0.3096931576728821
+        "image_path": "data\\test\\fake\\102 (9).jpg",
+        "pred_prob": 0.16145110130310059
       },
       {
-        "image_path": "data\\test\\fake\\798 (5).jpg",
-        "pred_prob": 0.1788993775844574
+        "image_path": "data\\test\\fake\\103 (10).jpg",
+        "pred_prob": 0.38754674792289734
       },
       {
-        "image_path": "data\\test\\fake\\181 (3).jpg",
-        "pred_prob": 0.42274370789527893
+        "image_path": "data\\test\\fake\\105 (10).jpg",
+        "pred_prob": 0.2555330991744995
       },
       {
-        "image_path": "data\\test\\fake\\937.jpg",
-        "pred_prob": 0.0981677696108818
+        "image_path": "data\\test\\fake\\105 (2).jpg",
+        "pred_prob": 0.27877482771873474
       },
       {
-        "image_path": "data\\test\\fake\\569.jpg",
-        "pred_prob": 0.45014166831970215
+        "image_path": "data\\test\\fake\\106 (10).jpg",
+        "pred_prob": 0.26564300060272217
       },
       {
-        "image_path": "data\\test\\fake\\395 (9).jpg",
-        "pred_prob": 0.24246615171432495
+        "image_path": "data\\test\\fake\\112 (10).jpg",
+        "pred_prob": 0.2934221923351288
       },
       {
-        "image_path": "data\\test\\fake\\513.jpg",
-        "pred_prob": 0.3601985573768616
+        "image_path": "data\\test\\fake\\114.jpg",
+        "pred_prob": 0.438309907913208
       }
     ]
   },
   "jpeg_compression_90": {
     "false_positives": [
       {
-        "image_path": "data\\test\\real\\0211 (4).jpg",
-        "pred_prob": 0.696646511554718
+        "image_path": "data\\test\\real\\0001 (3).jpg",
+        "pred_prob": 0.6763759255409241
       },
       {
-        "image_path": "data\\test\\real\\0893 (8).jpg",
-        "pred_prob": 0.8350405097007751
+        "image_path": "data\\test\\real\\0002 (10).jpg",
+        "pred_prob": 0.9130493402481079
       },
       {
-        "image_path": "data\\test\\real\\0995.jpg",
-        "pred_prob": 0.7077579498291016
+        "image_path": "data\\test\\real\\0007.jpg",
+        "pred_prob": 0.7933468222618103
       },
       {
-        "image_path": "data\\test\\real\\0253 (10).jpg",
-        "pred_prob": 0.8827279806137085
+        "image_path": "data\\test\\real\\0012.jpg",
+        "pred_prob": 0.6188278198242188
       },
       {
-        "image_path": "data\\test\\real\\0082 (10).jpg",
-        "pred_prob": 0.7219317555427551
+        "image_path": "data\\test\\real\\0013.jpg",
+        "pred_prob": 0.6173086762428284
       }
     ],
     "false_negatives": [
       {
-        "image_path": "data\\test\\fake\\920 (3).jpg",
-        "pred_prob": 0.2450876235961914
+        "image_path": "data\\test\\fake\\10 (6).jpg",
+        "pred_prob": 0.11598856002092361
       },
       {
-        "image_path": "data\\test\\fake\\528 (6).jpg",
-        "pred_prob": 0.1777164191007614
+        "image_path": "data\\test\\fake\\101.jpg",
+        "pred_prob": 0.28776776790618896
       },
       {
-        "image_path": "data\\test\\fake\\885 (10).jpg",
-        "pred_prob": 0.37147438526153564
+        "image_path": "data\\test\\fake\\102 (2).jpg",
+        "pred_prob": 0.18690569698810577
       },
       {
-        "image_path": "data\\test\\fake\\323 (3).jpg",
-        "pred_prob": 0.18510739505290985
+        "image_path": "data\\test\\fake\\102 (9).jpg",
+        "pred_prob": 0.09980405867099762
       },
       {
-        "image_path": "data\\test\\fake\\793 (9).jpg",
-        "pred_prob": 0.03208830952644348
+        "image_path": "data\\test\\fake\\105 (10).jpg",
+        "pred_prob": 0.256146639585495
       }
     ]
   },
   "jpeg_compression_70": {
     "false_positives": [
       {
-        "image_path": "data\\test\\real\\0847 (8).jpg",
-        "pred_prob": 0.7250720858573914
+        "image_path": "data\\test\\real\\0001 (3).jpg",
+        "pred_prob": 0.7551375031471252
       },
       {
-        "image_path": "data\\test\\real\\0630 (10).jpg",
-        "pred_prob": 0.7318594455718994
+        "image_path": "data\\test\\real\\0002 (10).jpg",
+        "pred_prob": 0.9425110816955566
       },
       {
-        "image_path": "data\\test\\real\\0503 (3).jpg",
-        "pred_prob": 0.7463700771331787
+        "image_path": "data\\test\\real\\0005 (3).jpg",
+        "pred_prob": 0.5733180046081543
       },
       {
-        "image_path": "data\\test\\real\\0134 (2).jpg",
-        "pred_prob": 0.875904381275177
+        "image_path": "data\\test\\real\\0007.jpg",
+        "pred_prob": 0.7005946636199951
       },
       {
-        "image_path": "data\\test\\real\\0967 (5).jpg",
-        "pred_prob": 0.7892386317253113
+        "image_path": "data\\test\\real\\0012.jpg",
+        "pred_prob": 0.8293249607086182
       }
     ],
     "false_negatives": [
       {
-        "image_path": "data\\test\\fake\\935 (3).jpg",
-        "pred_prob": 0.3244207501411438
+        "image_path": "data\\test\\fake\\10 (6).jpg",
+        "pred_prob": 0.030824022367596626
       },
       {
-        "image_path": "data\\test\\fake\\203 (4).jpg",
-        "pred_prob": 0.15136975049972534
+        "image_path": "data\\test\\fake\\101.jpg",
+        "pred_prob": 0.2864849865436554
       },
       {
-        "image_path": "data\\test\\fake\\724 (3).jpg",
-        "pred_prob": 0.2543165385723114
+        "image_path": "data\\test\\fake\\102 (2).jpg",
+        "pred_prob": 0.13605757057666779
       },
       {
-        "image_path": "data\\test\\fake\\109 (9).jpg",
-        "pred_prob": 0.052156705409288406
+        "image_path": "data\\test\\fake\\102 (9).jpg",
+        "pred_prob": 0.12374937534332275
       },
       {
-        "image_path": "data\\test\\fake\\530.jpg",
-        "pred_prob": 0.15269379317760468
+        "image_path": "data\\test\\fake\\103 (10).jpg",
+        "pred_prob": 0.3080625832080841
       }
     ]
   },
   "jpeg_compression_50": {
     "false_positives": [
       {
-        "image_path": "data\\test\\real\\0499 (3).jpg",
-        "pred_prob": 0.9832484722137451
+        "image_path": "data\\test\\real\\0001 (3).jpg",
+        "pred_prob": 0.9487814903259277
       },
       {
-        "image_path": "data\\test\\real\\0730 (7).jpg",
-        "pred_prob": 0.6624851226806641
+        "image_path": "data\\test\\real\\0002 (10).jpg",
+        "pred_prob": 0.678363561630249
       },
       {
-        "image_path": "data\\test\\real\\0135 (4).jpg",
-        "pred_prob": 0.723217248916626
+        "image_path": "data\\test\\real\\0005 (4).jpg",
+        "pred_prob": 0.5616128444671631
       },
       {
-        "image_path": "data\\test\\real\\0849.jpg",
-        "pred_prob": 0.7172418236732483
+        "image_path": "data\\test\\real\\0012.jpg",
+        "pred_prob": 0.701518177986145
       },
       {
-        "image_path": "data\\test\\real\\0710 (5).jpg",
-        "pred_prob": 0.6597158312797546
+        "image_path": "data\\test\\real\\0013 (10).jpg",
+        "pred_prob": 0.6056259274482727
       }
     ],
     "false_negatives": [
       {
-        "image_path": "data\\test\\fake\\186 (2).jpg",
-        "pred_prob": 0.28607726097106934
+        "image_path": "data\\test\\fake\\10 (6).jpg",
+        "pred_prob": 0.05266231670975685
       },
       {
-        "image_path": "data\\test\\fake\\430.jpg",
-        "pred_prob": 0.4229449927806854
+        "image_path": "data\\test\\fake\\10.jpg",
+        "pred_prob": 0.14786016941070557
       },
       {
-        "image_path": "data\\test\\fake\\332 (5).jpg",
-        "pred_prob": 0.3055177927017212
+        "image_path": "data\\test\\fake\\100 (10).jpg",
+        "pred_prob": 0.2860267162322998
       },
       {
-        "image_path": "data\\test\\fake\\243.jpg",
-        "pred_prob": 0.18193961679935455
+        "image_path": "data\\test\\fake\\100 (5).jpg",
+        "pred_prob": 0.3637869954109192
       },
       {
-        "image_path": "data\\test\\fake\\297 (8).jpg",
-        "pred_prob": 0.26736581325531006
+        "image_path": "data\\test\\fake\\100 (9).jpg",
+        "pred_prob": 0.32243430614471436
       }
     ]
   },
   "jpeg_compression_30": {
     "false_positives": [
       {
-        "image_path": "data\\test\\real\\0271 (10).jpg",
-        "pred_prob": 0.8217434883117676
+        "image_path": "data\\test\\real\\0001 (3).jpg",
+        "pred_prob": 0.5493475198745728
       },
       {
-        "image_path": "data\\test\\real\\0231 (3).jpg",
-        "pred_prob": 0.5787979364395142
+        "image_path": "data\\test\\real\\0005 (9).jpg",
+        "pred_prob": 0.6763360500335693
       },
       {
-        "image_path": "data\\test\\real\\0500.jpg",
-        "pred_prob": 0.6561652421951294
+        "image_path": "data\\test\\real\\0008.jpg",
+        "pred_prob": 0.605736494064331
       },
       {
-        "image_path": "data\\test\\real\\0392 (3).jpg",
-        "pred_prob": 0.6947408318519592
+        "image_path": "data\\test\\real\\0012.jpg",
+        "pred_prob": 0.5835219025611877
       },
       {
-        "image_path": "data\\test\\real\\0018 (3).jpg",
-        "pred_prob": 0.5285707712173462
+        "image_path": "data\\test\\real\\0017 (10).jpg",
+        "pred_prob": 0.7112155556678772
       }
     ],
     "false_negatives": [
       {
-        "image_path": "data\\test\\fake\\851.jpg",
-        "pred_prob": 0.4191829264163971
+        "image_path": "data\\test\\fake\\1 (10).jpg",
+        "pred_prob": 0.324111670255661
       },
       {
-        "image_path": "data\\test\\fake\\919 (9).jpg",
-        "pred_prob": 0.4499662220478058
+        "image_path": "data\\test\\fake\\10 (6).jpg",
+        "pred_prob": 0.040381982922554016
       },
       {
-        "image_path": "data\\test\\fake\\279 (4).jpg",
-        "pred_prob": 0.10235864669084549
+        "image_path": "data\\test\\fake\\10.jpg",
+        "pred_prob": 0.059533774852752686
       },
       {
-        "image_path": "data\\test\\fake\\562 (9).jpg",
-        "pred_prob": 0.357291042804718
+        "image_path": "data\\test\\fake\\100 (10).jpg",
+        "pred_prob": 0.3156723976135254
       },
       {
-        "image_path": "data\\test\\fake\\497 (9).jpg",
-        "pred_prob": 0.46177640557289124
+        "image_path": "data\\test\\fake\\100 (5).jpg",
+        "pred_prob": 0.2988200783729553
       }
     ]
   },
   "gaussian_blur_0.5": {
     "false_positives": [
       {
-        "image_path": "data\\test\\real\\0193.jpg",
-        "pred_prob": 0.5602655410766602
+        "image_path": "data\\test\\real\\0001 (3).jpg",
+        "pred_prob": 0.6667484641075134
       },
       {
-        "image_path": "data\\test\\real\\0101 (10).jpg",
-        "pred_prob": 0.9301533102989197
+        "image_path": "data\\test\\real\\0002 (10).jpg",
+        "pred_prob": 0.5880512595176697
       },
       {
-        "image_path": "data\\test\\real\\0136 (6).jpg",
-        "pred_prob": 0.5265247225761414
+        "image_path": "data\\test\\real\\0007.jpg",
+        "pred_prob": 0.616732656955719
       },
       {
-        "image_path": "data\\test\\real\\0547.jpg",
-        "pred_prob": 0.8059952259063721
+        "image_path": "data\\test\\real\\0017 (10).jpg",
+        "pred_prob": 0.618395209312439
       },
       {
-        "image_path": "data\\test\\real\\0252 (8).jpg",
-        "pred_prob": 0.5892706513404846
+        "image_path": "data\\test\\real\\0017 (3).jpg",
+        "pred_prob": 0.8962859511375427
       }
     ],
     "false_negatives": [
       {
-        "image_path": "data\\test\\fake\\209 (5).jpg",
-        "pred_prob": 0.26941147446632385
+        "image_path": "data\\test\\fake\\10 (6).jpg",
+        "pred_prob": 0.258593887090683
       },
       {
-        "image_path": "data\\test\\fake\\135 (8).jpg",
-        "pred_prob": 0.08006883412599564
+        "image_path": "data\\test\\fake\\101.jpg",
+        "pred_prob": 0.17666053771972656
       },
       {
-        "image_path": "data\\test\\fake\\991 (5).jpg",
-        "pred_prob": 0.48883071541786194
+        "image_path": "data\\test\\fake\\102 (2).jpg",
+        "pred_prob": 0.16735510528087616
       },
       {
-        "image_path": "data\\test\\fake\\20 (6).jpg",
-        "pred_prob": 0.017346128821372986
+        "image_path": "data\\test\\fake\\102 (9).jpg",
+        "pred_prob": 0.17177389562129974
       },
       {
-        "image_path": "data\\test\\fake\\167 (9).jpg",
-        "pred_prob": 0.19658485054969788
+        "image_path": "data\\test\\fake\\103 (10).jpg",
+        "pred_prob": 0.2106720358133316
       }
     ]
   },
   "gaussian_blur_1.0": {
     "false_positives": [
       {
-        "image_path": "data\\test\\real\\0597 (8).jpg",
-        "pred_prob": 0.5482132434844971
+        "image_path": "data\\test\\real\\0001 (3).jpg",
+        "pred_prob": 0.6505969166755676
       },
       {
-        "image_path": "data\\test\\real\\0602 (8).jpg",
-        "pred_prob": 0.5206577181816101
+        "image_path": "data\\test\\real\\0002 (10).jpg",
+        "pred_prob": 0.5223801732063293
       },
       {
-        "image_path": "data\\test\\real\\0132 (10).jpg",
-        "pred_prob": 0.7172951698303223
+        "image_path": "data\\test\\real\\0003 (3).jpg",
+        "pred_prob": 0.5314586162567139
       },
       {
-        "image_path": "data\\test\\real\\0469 (5).jpg",
-        "pred_prob": 0.5375521183013916
+        "image_path": "data\\test\\real\\0004.jpg",
+        "pred_prob": 0.5543227791786194
       },
       {
-        "image_path": "data\\test\\real\\0861 (5).jpg",
-        "pred_prob": 0.5479968190193176
+        "image_path": "data\\test\\real\\0005 (4).jpg",
+        "pred_prob": 0.5634283423423767
       }
     ],
     "false_negatives": [
       {
-        "image_path": "data\\test\\fake\\198 (10).jpg",
-        "pred_prob": 0.36693519353866577
+        "image_path": "data\\test\\fake\\100 (5).jpg",
+        "pred_prob": 0.20714084804058075
       },
       {
-        "image_path": "data\\test\\fake\\49 (4).jpg",
-        "pred_prob": 0.42440029978752136
+        "image_path": "data\\test\\fake\\101.jpg",
+        "pred_prob": 0.28820642828941345
       },
       {
-        "image_path": "data\\test\\fake\\155 (6).jpg",
-        "pred_prob": 0.14645670354366302
+        "image_path": "data\\test\\fake\\102 (2).jpg",
+        "pred_prob": 0.27259379625320435
       },
       {
-        "image_path": "data\\test\\fake\\566 (3).jpg",
-        "pred_prob": 0.45084860920906067
+        "image_path": "data\\test\\fake\\102 (9).jpg",
+        "pred_prob": 0.2870398163795471
       },
       {
-        "image_path": "data\\test\\fake\\468 (3).jpg",
-        "pred_prob": 0.381710022687912
+        "image_path": "data\\test\\fake\\103 (10).jpg",
+        "pred_prob": 0.2915160357952118
       }
     ]
   },
   "gaussian_blur_2.0": {
     "false_positives": [
       {
-        "image_path": "data\\test\\real\\0464 (3).jpg",
-        "pred_prob": 0.6258520483970642
+        "image_path": "data\\test\\real\\0001 (6).jpg",
+        "pred_prob": 0.5287984013557434
       },
       {
-        "image_path": "data\\test\\real\\0146 (5).jpg",
-        "pred_prob": 0.5283742547035217
+        "image_path": "data\\test\\real\\0004.jpg",
+        "pred_prob": 0.5592178106307983
       },
       {
-        "image_path": "data\\test\\real\\0740 (9).jpg",
-        "pred_prob": 0.5049594640731812
+        "image_path": "data\\test\\real\\0005 (9).jpg",
+        "pred_prob": 0.687908411026001
       },
       {
-        "image_path": "data\\test\\real\\0909 (2).jpg",
-        "pred_prob": 0.5433319211006165
+        "image_path": "data\\test\\real\\0008 (3).jpg",
+        "pred_prob": 0.55730140209198
       },
       {
-        "image_path": "data\\test\\real\\0967 (5).jpg",
-        "pred_prob": 0.5413986444473267
+        "image_path": "data\\test\\real\\0012 (5).jpg",
+        "pred_prob": 0.6422117948532104
       }
     ],
     "false_negatives": [
       {
-        "image_path": "data\\test\\fake\\898 (10).jpg",
-        "pred_prob": 0.3940483331680298
+        "image_path": "data\\test\\fake\\0 (10).jpg",
+        "pred_prob": 0.2888990640640259
       },
       {
-        "image_path": "data\\test\\fake\\2 (3).jpg",
-        "pred_prob": 0.45138630270957947
+        "image_path": "data\\test\\fake\\1.jpg",
+        "pred_prob": 0.29088881611824036
       },
       {
-        "image_path": "data\\test\\fake\\629 (4).jpg",
-        "pred_prob": 0.4172609746456146
+        "image_path": "data\\test\\fake\\10 (2).jpg",
+        "pred_prob": 0.29279714822769165
       },
       {
-        "image_path": "data\\test\\fake\\85 (7).jpg",
-        "pred_prob": 0.4618501365184784
+        "image_path": "data\\test\\fake\\10 (5).jpg",
+        "pred_prob": 0.28238070011138916
       },
       {
-        "image_path": "data\\test\\fake\\576.jpg",
-        "pred_prob": 0.4337865710258484
+        "image_path": "data\\test\\fake\\10 (6).jpg",
+        "pred_prob": 0.2623050808906555
       }
     ]
   },
   "resize_0.5": {
     "false_positives": [
       {
-        "image_path": "data\\test\\real\\0067 (6).jpg",
-        "pred_prob": 0.5282636284828186
+        "image_path": "data\\test\\real\\0001 (3).jpg",
+        "pred_prob": 0.6245374083518982
       },
       {
-        "image_path": "data\\test\\real\\0549 (2).jpg",
-        "pred_prob": 0.7176516056060791
+        "image_path": "data\\test\\real\\0002 (10).jpg",
+        "pred_prob": 0.5591254830360413
       },
       {
-        "image_path": "data\\test\\real\\0597 (8).jpg",
-        "pred_prob": 0.5432276725769043
+        "image_path": "data\\test\\real\\0004.jpg",
+        "pred_prob": 0.5960007905960083
       },
       {
-        "image_path": "data\\test\\real\\0980 (10).jpg",
-        "pred_prob": 0.5315495729446411
+        "image_path": "data\\test\\real\\0005 (4).jpg",
+        "pred_prob": 0.5937204360961914
       },
       {
-        "image_path": "data\\test\\real\\0678 (5).jpg",
-        "pred_prob": 0.6718738675117493
+        "image_path": "data\\test\\real\\0005 (9).jpg",
+        "pred_prob": 0.8208224773406982
       }
     ],
     "false_negatives": [
       {
-        "image_path": "data\\test\\fake\\7.jpg",
-        "pred_prob": 0.16312968730926514
+        "image_path": "data\\test\\fake\\1.jpg",
+        "pred_prob": 0.36955589056015015
       },
       {
-        "image_path": "data\\test\\fake\\543 (2).jpg",
-        "pred_prob": 0.4928637444972992
+        "image_path": "data\\test\\fake\\10.jpg",
+        "pred_prob": 0.28098270297050476
       },
       {
-        "image_path": "data\\test\\fake\\798.jpg",
-        "pred_prob": 0.42148470878601074
+        "image_path": "data\\test\\fake\\100 (10).jpg",
+        "pred_prob": 0.2897045314311981
       },
       {
-        "image_path": "data\\test\\fake\\849 (9).jpg",
-        "pred_prob": 0.41976091265678406
+        "image_path": "data\\test\\fake\\100 (3).jpg",
+        "pred_prob": 0.36908408999443054
       },
       {
-        "image_path": "data\\test\\fake\\972 (3).jpg",
-        "pred_prob": 0.44367343187332153
+        "image_path": "data\\test\\fake\\100 (4).jpg",
+        "pred_prob": 0.48550623655319214
       }
     ]
   },
   "resize_0.25": {
     "false_positives": [
       {
-        "image_path": "data\\test\\real\\0840 (3).jpg",
-        "pred_prob": 0.5066748261451721
+        "image_path": "data\\test\\real\\0001.jpg",
+        "pred_prob": 0.5496193170547485
       },
       {
-        "image_path": "data\\test\\real\\0517 (9).jpg",
-        "pred_prob": 0.5511369705200195
+        "image_path": "data\\test\\real\\0003 (6).jpg",
+        "pred_prob": 0.5534095764160156
       },
       {
-        "image_path": "data\\test\\real\\0178 (2).jpg",
-        "pred_prob": 0.5743358135223389
+        "image_path": "data\\test\\real\\0004.jpg",
+        "pred_prob": 0.5093359351158142
       },
       {
-        "image_path": "data\\test\\real\\0445 (9).jpg",
-        "pred_prob": 0.7518510222434998
+        "image_path": "data\\test\\real\\0005 (2).jpg",
+        "pred_prob": 0.5694926381111145
       },
       {
-        "image_path": "data\\test\\real\\0589 (10).jpg",
-        "pred_prob": 0.5160722732543945
+        "image_path": "data\\test\\real\\0005 (9).jpg",
+        "pred_prob": 0.7080599069595337
       }
     ],
     "false_negatives": [
       {
-        "image_path": "data\\test\\fake\\13.jpg",
-        "pred_prob": 0.43347838521003723
+        "image_path": "data\\test\\fake\\0 (10).jpg",
+        "pred_prob": 0.18072055280208588
       },
       {
-        "image_path": "data\\test\\fake\\99 (2).jpg",
-        "pred_prob": 0.45724111795425415
+        "image_path": "data\\test\\fake\\0 (3).jpg",
+        "pred_prob": 0.2834032475948334
       },
       {
-        "image_path": "data\\test\\fake\\943 (2).jpg",
-        "pred_prob": 0.47175097465515137
+        "image_path": "data\\test\\fake\\10 (5).jpg",
+        "pred_prob": 0.2217443883419037
       },
       {
-        "image_path": "data\\test\\fake\\744 (3).jpg",
-        "pred_prob": 0.31600791215896606
+        "image_path": "data\\test\\fake\\10 (6).jpg",
+        "pred_prob": 0.2585272789001465
       },
       {
-        "image_path": "data\\test\\fake\\11 (7).jpg",
-        "pred_prob": 0.4226478040218353
+        "image_path": "data\\test\\fake\\10 (8).jpg",
+        "pred_prob": 0.28314992785453796
       }
     ]
   },
   "gaussian_noise_0.02": {
     "false_positives": [
       {
-        "image_path": "data\\test\\real\\0296 (10).jpg",
-        "pred_prob": 0.688169538974762
+        "image_path": "data\\test\\real\\0002 (10).jpg",
+        "pred_prob": 0.9532900452613831
       },
       {
-        "image_path": "data\\test\\real\\0575.jpg",
-        "pred_prob": 0.5852238535881042
+        "image_path": "data\\test\\real\\0004.jpg",
+        "pred_prob": 0.5981262922286987
       },
       {
-        "image_path": "data\\test\\real\\0693 (10).jpg",
-        "pred_prob": 0.7902121543884277
+        "image_path": "data\\test\\real\\0005 (9).jpg",
+        "pred_prob": 0.5642848610877991
       },
       {
-        "image_path": "data\\test\\real\\0576 (2).jpg",
-        "pred_prob": 0.6371645927429199
+        "image_path": "data\\test\\real\\0007.jpg",
+        "pred_prob": 0.7084015607833862
       },
       {
-        "image_path": "data\\test\\real\\0609 (3).jpg",
-        "pred_prob": 0.7353194355964661
+        "image_path": "data\\test\\real\\0010.jpg",
+        "pred_prob": 0.7030853033065796
       }
     ],
     "false_negatives": [
       {
-        "image_path": "data\\test\\fake\\204 (3).jpg",
-        "pred_prob": 0.4215262234210968
+        "image_path": "data\\test\\fake\\10 (6).jpg",
+        "pred_prob": 0.09030764549970627
       },
       {
-        "image_path": "data\\test\\fake\\580 (6).jpg",
-        "pred_prob": 0.1963285356760025
+        "image_path": "data\\test\\fake\\10.jpg",
+        "pred_prob": 0.45120492577552795
       },
       {
-        "image_path": "data\\test\\fake\\375 (3).jpg",
-        "pred_prob": 0.4055291414260864
+        "image_path": "data\\test\\fake\\102 (2).jpg",
+        "pred_prob": 0.23381860554218292
       },
       {
-        "image_path": "data\\test\\fake\\36 (3).jpg",
-        "pred_prob": 0.4463828206062317
+        "image_path": "data\\test\\fake\\102 (8).jpg",
+        "pred_prob": 0.2610985338687897
       },
       {
-        "image_path": "data\\test\\fake\\93 (10).jpg",
-        "pred_prob": 0.2838885188102722
+        "image_path": "data\\test\\fake\\102 (9).jpg",
+        "pred_prob": 0.11611733585596085
       }
     ]
   },
   "gaussian_noise_0.05": {
     "false_positives": [
       {
-        "image_path": "data\\test\\real\\0251 (3).jpg",
-        "pred_prob": 0.625980794429779
+        "image_path": "data\\test\\real\\0004 (9).jpg",
+        "pred_prob": 0.647093653678894
       },
       {
-        "image_path": "data\\test\\real\\0642 (2).jpg",
-        "pred_prob": 0.6684557795524597
+        "image_path": "data\\test\\real\\0005 (4).jpg",
+        "pred_prob": 0.6695913076400757
       },
       {
-        "image_path": "data\\test\\real\\0464 (10).jpg",
-        "pred_prob": 0.810856819152832
+        "image_path": "data\\test\\real\\0006 (9).jpg",
+        "pred_prob": 0.594872772693634
       },
       {
-        "image_path": "data\\test\\real\\0241 (8).jpg",
-        "pred_prob": 0.5707474946975708
+        "image_path": "data\\test\\real\\0007 (9).jpg",
+        "pred_prob": 0.5698794722557068
       },
       {
-        "image_path": "data\\test\\real\\0016 (2).jpg",
-        "pred_prob": 0.5038056969642639
+        "image_path": "data\\test\\real\\0007.jpg",
+        "pred_prob": 0.6109738945960999
       }
     ],
     "false_negatives": [
       {
-        "image_path": "data\\test\\fake\\12 (3).jpg",
-        "pred_prob": 0.14630179107189178
+        "image_path": "data\\test\\fake\\10 (6).jpg",
+        "pred_prob": 0.27437594532966614
       },
       {
-        "image_path": "data\\test\\fake\\639 (2).jpg",
-        "pred_prob": 0.2652367353439331
+        "image_path": "data\\test\\fake\\102 (2).jpg",
+        "pred_prob": 0.12136296182870865
       },
       {
-        "image_path": "data\\test\\fake\\249 (3).jpg",
-        "pred_prob": 0.4550345838069916
+        "image_path": "data\\test\\fake\\102 (8).jpg",
+        "pred_prob": 0.45456233620643616
       },
       {
-        "image_path": "data\\test\\fake\\567 (4).jpg",
-        "pred_prob": 0.43157315254211426
+        "image_path": "data\\test\\fake\\103.jpg",
+        "pred_prob": 0.28576913475990295
       },
       {
-        "image_path": "data\\test\\fake\\401 (5).jpg",
-        "pred_prob": 0.27843257784843445
+        "image_path": "data\\test\\fake\\105 (10).jpg",
+        "pred_prob": 0.29099568724632263
       }
     ]
   },
   "gaussian_noise_0.1": {
     "false_positives": [
       {
-        "image_path": "data\\test\\real\\0312 (10).jpg",
-        "pred_prob": 0.5735832452774048
+        "image_path": "data\\test\\real\\0002 (10).jpg",
+        "pred_prob": 0.5100469589233398
       },
       {
-        "image_path": "data\\test\\real\\0940 (5).jpg",
-        "pred_prob": 0.689494252204895
+        "image_path": "data\\test\\real\\0003 (3).jpg",
+        "pred_prob": 0.6737639904022217
       },
       {
-        "image_path": "data\\test\\real\\0090 (2).jpg",
-        "pred_prob": 0.5092925429344177
+        "image_path": "data\\test\\real\\0004 (8).jpg",
+        "pred_prob": 0.627226710319519
       },
       {
-        "image_path": "data\\test\\real\\0057 (2).jpg",
-        "pred_prob": 0.8937923908233643
+        "image_path": "data\\test\\real\\0004.jpg",
+        "pred_prob": 0.6561736464500427
       },
       {
-        "image_path": "data\\test\\real\\0455.jpg",
-        "pred_prob": 0.7697998285293579
+        "image_path": "data\\test\\real\\0005 (4).jpg",
+        "pred_prob": 0.5472582578659058
       }
     ],
     "false_negatives": [
       {
-        "image_path": "data\\test\\fake\\771 (2).jpg",
-        "pred_prob": 0.4279555380344391
+        "image_path": "data\\test\\fake\\0 (2).jpg",
+        "pred_prob": 0.18328851461410522
       },
       {
-        "image_path": "data\\test\\fake\\477 (9).jpg",
-        "pred_prob": 0.4997355043888092
+        "image_path": "data\\test\\fake\\10 (6).jpg",
+        "pred_prob": 0.273743599653244
       },
       {
-        "image_path": "data\\test\\fake\\467 (4).jpg",
-        "pred_prob": 0.49198928475379944
+        "image_path": "data\\test\\fake\\100 (2).jpg",
+        "pred_prob": 0.16030444204807281
       },
       {
-        "image_path": "data\\test\\fake\\48 (6).jpg",
-        "pred_prob": 0.2060500979423523
+        "image_path": "data\\test\\fake\\100 (5).jpg",
+        "pred_prob": 0.29848551750183105
       },
       {
-        "image_path": "data\\test\\fake\\904 (3).jpg",
-        "pred_prob": 0.4119829535484314
+        "image_path": "data\\test\\fake\\102 (2).jpg",
+        "pred_prob": 0.28961291909217834
       }
     ]
   },
   "color_jitter_0.2": {
     "false_positives": [
       {
-        "image_path": "data\\test\\real\\0975 (2).jpg",
-        "pred_prob": 0.7339050769805908
+        "image_path": "data\\test\\real\\0001 (3).jpg",
+        "pred_prob": 0.7851436138153076
       },
       {
-        "image_path": "data\\test\\real\\0864 (2).jpg",
-        "pred_prob": 0.675783634185791
+        "image_path": "data\\test\\real\\0002 (10).jpg",
+        "pred_prob": 0.9724265933036804
       },
       {
-        "image_path": "data\\test\\real\\0231 (6).jpg",
-        "pred_prob": 0.9649484753608704
+        "image_path": "data\\test\\real\\0005 (10).jpg",
+        "pred_prob": 0.5298269391059875
       },
       {
-        "image_path": "data\\test\\real\\0108 (8).jpg",
-        "pred_prob": 0.5599028468132019
+        "image_path": "data\\test\\real\\0007.jpg",
+        "pred_prob": 0.8744825124740601
       },
       {
-        "image_path": "data\\test\\real\\0793 (10).jpg",
-        "pred_prob": 0.8206061720848083
+        "image_path": "data\\test\\real\\0017 (10).jpg",
+        "pred_prob": 0.7395235300064087
       }
     ],
     "false_negatives": [
       {
-        "image_path": "data\\test\\fake\\481 (4).jpg",
-        "pred_prob": 0.015897855162620544
+        "image_path": "data\\test\\fake\\10 (6).jpg",
+        "pred_prob": 0.19939853250980377
       },
       {
-        "image_path": "data\\test\\fake\\999 (3).jpg",
-        "pred_prob": 0.06995097547769547
+        "image_path": "data\\test\\fake\\100 (10).jpg",
+        "pred_prob": 0.48305103182792664
       },
       {
-        "image_path": "data\\test\\fake\\844 (9).jpg",
-        "pred_prob": 0.49786895513534546
+        "image_path": "data\\test\\fake\\101.jpg",
+        "pred_prob": 0.3204517364501953
       },
       {
-        "image_path": "data\\test\\fake\\383 (3).jpg",
-        "pred_prob": 0.16554716229438782
+        "image_path": "data\\test\\fake\\102 (2).jpg",
+        "pred_prob": 0.25325337052345276
       },
       {
-        "image_path": "data\\test\\fake\\83 (5).jpg",
-        "pred_prob": 0.0741778090596199
+        "image_path": "data\\test\\fake\\102 (9).jpg",
+        "pred_prob": 0.10226979851722717
       }
     ]
   },
   "center_crop_0.8": {
     "false_positives": [
       {
-        "image_path": "data\\test\\real\\0478 (3).jpg",
-        "pred_prob": 0.55943763256073
+        "image_path": "data\\test\\real\\0001 (3).jpg",
+        "pred_prob": 0.6863013505935669
       },
       {
-        "image_path": "data\\test\\real\\0581 (8).jpg",
-        "pred_prob": 0.7510663270950317
+        "image_path": "data\\test\\real\\0005 (9).jpg",
+        "pred_prob": 0.6871044635772705
       },
       {
-        "image_path": "data\\test\\real\\0589 (9).jpg",
-        "pred_prob": 0.6226307153701782
+        "image_path": "data\\test\\real\\0007.jpg",
+        "pred_prob": 0.5249878168106079
       },
       {
-        "image_path": "data\\test\\real\\0018 (3).jpg",
-        "pred_prob": 0.5308718681335449
+        "image_path": "data\\test\\real\\0013 (10).jpg",
+        "pred_prob": 0.5597375631332397
       },
       {
-        "image_path": "data\\test\\real\\0815 (2).jpg",
-        "pred_prob": 0.7211695313453674
+        "image_path": "data\\test\\real\\0013.jpg",
+        "pred_prob": 0.5786544680595398
       }
     ],
     "false_negatives": [
       {
-        "image_path": "data\\test\\fake\\543.jpg",
-        "pred_prob": 0.1920962631702423
+        "image_path": "data\\test\\fake\\10 (6).jpg",
+        "pred_prob": 0.025130603462457657
       },
       {
-        "image_path": "data\\test\\fake\\652 (10).jpg",
-        "pred_prob": 0.1280738115310669
+        "image_path": "data\\test\\fake\\100 (5).jpg",
+        "pred_prob": 0.1928504854440689
       },
       {
-        "image_path": "data\\test\\fake\\888 (2).jpg",
-        "pred_prob": 0.4908043444156647
+        "image_path": "data\\test\\fake\\101.jpg",
+        "pred_prob": 0.40213435888290405
       },
       {
-        "image_path": "data\\test\\fake\\831 (5).jpg",
-        "pred_prob": 0.12321443110704422
+        "image_path": "data\\test\\fake\\102 (2).jpg",
+        "pred_prob": 0.2966406047344208
       },
       {
-        "image_path": "data\\test\\fake\\29 (6).jpg",
-        "pred_prob": 0.24508953094482422
+        "image_path": "data\\test\\fake\\102 (9).jpg",
+        "pred_prob": 0.17608872056007385
       }
     ]
   }
