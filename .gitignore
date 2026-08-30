@@ -20,11 +20,17 @@ data/*
 !data/.gitkeep
 results/*
 !results/.gitkeep
+!results/head_best.pt
 *.pt
 *.pth
 *.ckpt
 *.safetensors
+!results/head_best.pt
 
 # Editors
 .vscode/
 .idea/
+
+# Local run logs (scratch)
+*.log
+*_log.txt

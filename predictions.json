@@ -1,0 +1,402 @@
+[
+  {
+    "image_path": "demo_images/fake_0 (10).jpg",
+    "pred": 0.999973
+  },
+  {
+    "image_path": "demo_images/fake_0 (2).jpg",
+    "pred": 0.918419
+  },
+  {
+    "image_path": "demo_images/fake_0 (3).jpg",
+    "pred": 0.999944
+  },
+  {
+    "image_path": "demo_images/fake_0 (4).jpg",
+    "pred": 1.0
+  },
+  {
+    "image_path": "demo_images/fake_0 (5).jpg",
+    "pred": 0.999966
+  },
+  {
+    "image_path": "demo_images/fake_0 (6).jpg",
+    "pred": 0.999597
+  },
+  {
+    "image_path": "demo_images/fake_0 (7).jpg",
+    "pred": 0.999999
+  },
+  {
+    "image_path": "demo_images/fake_0 (8).jpg",
+    "pred": 1.0
+  },
+  {
+    "image_path": "demo_images/fake_0 (9).jpg",
+    "pred": 0.999092
+  },
+  {
+    "image_path": "demo_images/fake_0.jpg",
+    "pred": 0.971313
+  },
+  {
+    "image_path": "demo_images/fake_1 (10).jpg",
+    "pred": 0.997419
+  },
+  {
+    "image_path": "demo_images/fake_1 (2).jpg",
+    "pred": 0.998447
+  },
+  {
+    "image_path": "demo_images/fake_1 (3).jpg",
+    "pred": 0.996416
+  },
+  {
+    "image_path": "demo_images/fake_1 (4).jpg",
+    "pred": 0.999926
+  },
+  {
+    "image_path": "demo_images/fake_1 (5).jpg",
+    "pred": 0.999938
+  },
+  {
+    "image_path": "demo_images/fake_1 (6).jpg",
+    "pred": 0.999989
+  },
+  {
+    "image_path": "demo_images/fake_1 (7).jpg",
+    "pred": 1.0
+  },
+  {
+    "image_path": "demo_images/fake_1 (8).jpg",
+    "pred": 0.999861
+  },
+  {
+    "image_path": "demo_images/fake_1 (9).jpg",
+    "pred": 0.957921
+  },
+  {
+    "image_path": "demo_images/fake_1.jpg",
+    "pred": 0.999566
+  },
+  {
+    "image_path": "demo_images/fake_10 (10).jpg",
+    "pred": 0.999752
+  },
+  {
+    "image_path": "demo_images/fake_10 (2).jpg",
+    "pred": 0.999877
+  },
+  {
+    "image_path": "demo_images/fake_10 (3).jpg",
+    "pred": 0.999993
+  },
+  {
+    "image_path": "demo_images/fake_10 (4).jpg",
+    "pred": 0.999984
+  },
+  {
+    "image_path": "demo_images/fake_10 (5).jpg",
+    "pred": 0.998799
+  },
+  {
+    "image_path": "demo_images/fake_10 (6).jpg",
+    "pred": 0.563757
+  },
+  {
+    "image_path": "demo_images/fake_10 (7).jpg",
+    "pred": 0.999985
+  },
+  {
+    "image_path": "demo_images/fake_10 (8).jpg",
+    "pred": 0.999994
+  },
+  {
+    "image_path": "demo_images/fake_10 (9).jpg",
+    "pred": 0.99685
+  },
+  {
+    "image_path": "demo_images/fake_10.jpg",
+    "pred": 0.990152
+  },
+  {
+    "image_path": "demo_images/fake_100 (10).jpg",
+    "pred": 0.709518
+  },
+  {
+    "image_path": "demo_images/fake_100 (2).jpg",
+    "pred": 0.999976
+  },
+  {
+    "image_path": "demo_images/fake_100 (3).jpg",
+    "pred": 0.998888
+  },
+  {
+    "image_path": "demo_images/fake_100 (4).jpg",
+    "pred": 0.999958
+  },
+  {
+    "image_path": "demo_images/fake_100 (5).jpg",
+    "pred": 0.995043
+  },
+  {
+    "image_path": "demo_images/fake_100 (6).jpg",
+    "pred": 0.999997
+  },
+  {
+    "image_path": "demo_images/fake_100 (7).jpg",
+    "pred": 1.0
+  },
+  {
+    "image_path": "demo_images/fake_100 (8).jpg",
+    "pred": 0.999941
+  },
+  {
+    "image_path": "demo_images/fake_100 (9).jpg",
+    "pred": 0.967556
+  },
+  {
+    "image_path": "demo_images/fake_100.jpg",
+    "pred": 0.962716
+  },
+  {
+    "image_path": "demo_images/fake_101 (10).jpg",
+    "pred": 0.997193
+  },
+  {
+    "image_path": "demo_images/fake_101 (2).jpg",
+    "pred": 0.999823
+  },
+  {
+    "image_path": "demo_images/fake_101 (3).jpg",
+    "pred": 0.999872
+  },
+  {
+    "image_path": "demo_images/fake_101 (4).jpg",
+    "pred": 1.0
+  },
+  {
+    "image_path": "demo_images/fake_101 (5).jpg",
+    "pred": 0.999997
+  },
+  {
+    "image_path": "demo_images/fake_101 (6).jpg",
+    "pred": 0.982861
+  },
+  {
+    "image_path": "demo_images/fake_101 (7).jpg",
+    "pred": 0.999999
+  },
+  {
+    "image_path": "demo_images/fake_101 (8).jpg",
+    "pred": 0.999896
+  },
+  {
+    "image_path": "demo_images/fake_101 (9).jpg",
+    "pred": 0.95151
+  },
+  {
+    "image_path": "demo_images/fake_101.jpg",
+    "pred": 0.516692
+  },
+  {
+    "image_path": "demo_images/real_0000 (10).jpg",
+    "pred": 0.000972
+  },
+  {
+    "image_path": "demo_images/real_0000 (2).jpg",
+    "pred": 0.018022
+  },
+  {
+    "image_path": "demo_images/real_0000 (3).jpg",
+    "pred": 0.013954
+  },
+  {
+    "image_path": "demo_images/real_0000 (4).jpg",
+    "pred": 0.002447
+  },
+  {
+    "image_path": "demo_images/real_0000 (5).jpg",
+    "pred": 0.001463
+  },
+  {
+    "image_path": "demo_images/real_0000 (6).jpg",
+    "pred": 0.000473
+  },
+  {
+    "image_path": "demo_images/real_0000 (7).jpg",
+    "pred": 2e-06
+  },
+  {
+    "image_path": "demo_images/real_0000 (8).jpg",
+    "pred": 0.041307
+  },
+  {
+    "image_path": "demo_images/real_0000 (9).jpg",
+    "pred": 0.114435
+  },
+  {
+    "image_path": "demo_images/real_0000.jpg",
+    "pred": 0.008139
+  },
+  {
+    "image_path": "demo_images/real_0001 (10).jpg",
+    "pred": 0.008884
+  },
+  {
+    "image_path": "demo_images/real_0001 (2).jpg",
+    "pred": 8.6e-05
+  },
+  {
+    "image_path": "demo_images/real_0001 (3).jpg",
+    "pred": 0.987779
+  },
+  {
+    "image_path": "demo_images/real_0001 (4).jpg",
+    "pred": 4e-06
+  },
+  {
+    "image_path": "demo_images/real_0001 (5).jpg",
+    "pred": 0.004613
+  },
+  {
+    "image_path": "demo_images/real_0001 (6).jpg",
+    "pred": 0.010368
+  },
+  {
+    "image_path": "demo_images/real_0001 (7).jpg",
+    "pred": 0.000792
+  },
+  {
+    "image_path": "demo_images/real_0001 (8).jpg",
+    "pred": 0.000334
+  },
+  {
+    "image_path": "demo_images/real_0001 (9).jpg",
+    "pred": 0.004844
+  },
+  {
+    "image_path": "demo_images/real_0001.jpg",
+    "pred": 0.031129
+  },
+  {
+    "image_path": "demo_images/real_0002 (10).jpg",
+    "pred": 0.61391
+  },
+  {
+    "image_path": "demo_images/real_0002 (2).jpg",
+    "pred": 0.022424
+  },
+  {
+    "image_path": "demo_images/real_0002 (3).jpg",
+    "pred": 0.011329
+  },
+  {
+    "image_path": "demo_images/real_0002 (4).jpg",
+    "pred": 0.000139
+  },
+  {
+    "image_path": "demo_images/real_0002 (5).jpg",
+    "pred": 0.029335
+  },
+  {
+    "image_path": "demo_images/real_0002 (6).jpg",
+    "pred": 0.000219
+  },
+  {
+    "image_path": "demo_images/real_0002 (7).jpg",
+    "pred": 0.003924
+  },
+  {
+    "image_path": "demo_images/real_0002 (8).jpg",
+    "pred": 0.000137
+  },
+  {
+    "image_path": "demo_images/real_0002 (9).jpg",
+    "pred": 0.022433
+  },
+  {
+    "image_path": "demo_images/real_0002.jpg",
+    "pred": 0.003401
+  },
+  {
+    "image_path": "demo_images/real_0003 (10).jpg",
+    "pred": 4.4e-05
+  },
+  {
+    "image_path": "demo_images/real_0003 (2).jpg",
+    "pred": 0.028968
+  },
+  {
+    "image_path": "demo_images/real_0003 (3).jpg",
+    "pred": 0.404526
+  },
+  {
+    "image_path": "demo_images/real_0003 (4).jpg",
+    "pred": 0.000129
+  },
+  {
+    "image_path": "demo_images/real_0003 (5).jpg",
+    "pred": 0.00162
+  },
+  {
+    "image_path": "demo_images/real_0003 (6).jpg",
+    "pred": 0.000834
+  },
+  {
+    "image_path": "demo_images/real_0003 (7).jpg",
+    "pred": 0.000267
+  },
+  {
+    "image_path": "demo_images/real_0003 (8).jpg",
+    "pred": 0.000108
+  },
+  {
+    "image_path": "demo_images/real_0003 (9).jpg",
+    "pred": 0.001378
+  },
+  {
+    "image_path": "demo_images/real_0003.jpg",
+    "pred": 5.9e-05
+  },
+  {
+    "image_path": "demo_images/real_0004 (10).jpg",
+    "pred": 0.012775
+  },
+  {
+    "image_path": "demo_images/real_0004 (2).jpg",
+    "pred": 0.026248
+  },
+  {
+    "image_path": "demo_images/real_0004 (3).jpg",
+    "pred": 0.000152
+  },
+  {
+    "image_path": "demo_images/real_0004 (4).jpg",
+    "pred": 0.014335
+  },
+  {
+    "image_path": "demo_images/real_0004 (5).jpg",
+    "pred": 0.028125
+  },
+  {
+    "image_path": "demo_images/real_0004 (6).jpg",
+    "pred": 0.001068
+  },
+  {
+    "image_path": "demo_images/real_0004 (7).jpg",
+    "pred": 0.019784
+  },
+  {
+    "image_path": "demo_images/real_0004 (8).jpg",
+    "pred": 0.000498
+  },
+  {
+    "image_path": "demo_images/real_0004 (9).jpg",
+    "pred": 0.000938
+  },
+  {
+    "image_path": "demo_images/real_0004.jpg",
+    "pred": 0.233732
+  }
+]

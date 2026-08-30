@@ -38,7 +38,7 @@ def run_epoch(model, loader, device, optimizer=None):
     total_loss, correct, total = 0.0, 0, 0
     with torch.set_grad_enabled(is_train):
         for images, labels, _ in tqdm(loader, leave=False):
-            images, labels = images.to(device), labels.to(device)
+            images, labels = images.to(device), labels.to(device=device, dtype=torch.float32)
             logits = model(images)
             loss = loss_fn(logits, labels)
 

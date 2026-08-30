@@ -1,0 +1,732 @@
+{
+  "clean": {
+    "false_positives": [
+      {
+        "image_path": "data/val/real/0343 (9).jpg",
+        "pred_prob": 0.5656719207763672
+      },
+      {
+        "image_path": "data/val/real/0085 (5).jpg",
+        "pred_prob": 0.5903544425964355
+      },
+      {
+        "image_path": "data/val/real/0618 (3).jpg",
+        "pred_prob": 0.8899680376052856
+      },
+      {
+        "image_path": "data/val/real/0029 (10).jpg",
+        "pred_prob": 0.8084966540336609
+      },
+      {
+        "image_path": "data/val/real/0644 (2).jpg",
+        "pred_prob": 0.5626469254493713
+      },
+      {
+        "image_path": "data/val/real/0891 (4).jpg",
+        "pred_prob": 0.6673194766044617
+      },
+      {
+        "image_path": "data/val/real/0967 (9).jpg",
+        "pred_prob": 0.6818519830703735
+      },
+      {
+        "image_path": "data/val/real/0625 (4).jpg",
+        "pred_prob": 0.6360134482383728
+      },
+      {
+        "image_path": "data/val/real/0529 (9).jpg",
+        "pred_prob": 0.7291486263275146
+      },
+      {
+        "image_path": "data/val/real/0920 (3).jpg",
+        "pred_prob": 0.9836050868034363
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_path": "data/val/fake/578 (7).jpg",
+        "pred_prob": 0.26010221242904663
+      },
+      {
+        "image_path": "data/val/fake/80 (8).jpg",
+        "pred_prob": 0.27391862869262695
+      },
+      {
+        "image_path": "data/val/fake/920 (2).jpg",
+        "pred_prob": 0.1384076625108719
+      },
+      {
+        "image_path": "data/val/fake/419 (10).jpg",
+        "pred_prob": 0.11855880171060562
+      },
+      {
+        "image_path": "data/val/fake/245 (7).jpg",
+        "pred_prob": 0.41527071595191956
+      },
+      {
+        "image_path": "data/val/fake/393 (3).jpg",
+        "pred_prob": 0.24656225740909576
+      },
+      {
+        "image_path": "data/val/fake/888 (10).jpg",
+        "pred_prob": 0.32590818405151367
+      },
+      {
+        "image_path": "data/val/fake/993 (8).jpg",
+        "pred_prob": 0.2242148369550705
+      },
+      {
+        "image_path": "data/val/fake/23 (2).jpg",
+        "pred_prob": 0.30644798278808594
+      },
+      {
+        "image_path": "data/val/fake/176.jpg",
+        "pred_prob": 0.3562057912349701
+      }
+    ]
+  },
+  "jpeg_compression_90": {
+    "false_positives": [
+      {
+        "image_path": "data/val/real/0035 (9).jpg",
+        "pred_prob": 0.5145959258079529
+      },
+      {
+        "image_path": "data/val/real/0029 (10).jpg",
+        "pred_prob": 0.7612593770027161
+      },
+      {
+        "image_path": "data/val/real/0644 (2).jpg",
+        "pred_prob": 0.6729642152786255
+      },
+      {
+        "image_path": "data/val/real/0891 (4).jpg",
+        "pred_prob": 0.6886031627655029
+      },
+      {
+        "image_path": "data/val/real/0967 (9).jpg",
+        "pred_prob": 0.5043778419494629
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_path": "data/val/fake/578 (7).jpg",
+        "pred_prob": 0.24182727932929993
+      },
+      {
+        "image_path": "data/val/fake/80 (8).jpg",
+        "pred_prob": 0.18662869930267334
+      },
+      {
+        "image_path": "data/val/fake/920 (2).jpg",
+        "pred_prob": 0.1440339982509613
+      },
+      {
+        "image_path": "data/val/fake/419 (10).jpg",
+        "pred_prob": 0.13850674033164978
+      },
+      {
+        "image_path": "data/val/fake/642 (6).jpg",
+        "pred_prob": 0.3895927369594574
+      }
+    ]
+  },
+  "jpeg_compression_70": {
+    "false_positives": [
+      {
+        "image_path": "data/val/real/0343 (9).jpg",
+        "pred_prob": 0.5721895098686218
+      },
+      {
+        "image_path": "data/val/real/0754 (8).jpg",
+        "pred_prob": 0.5172398686408997
+      },
+      {
+        "image_path": "data/val/real/0085 (5).jpg",
+        "pred_prob": 0.7970160245895386
+      },
+      {
+        "image_path": "data/val/real/0618 (3).jpg",
+        "pred_prob": 0.9183021187782288
+      },
+      {
+        "image_path": "data/val/real/0029 (10).jpg",
+        "pred_prob": 0.8339354991912842
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_path": "data/val/fake/80 (8).jpg",
+        "pred_prob": 0.4733123779296875
+      },
+      {
+        "image_path": "data/val/fake/920 (2).jpg",
+        "pred_prob": 0.029931332916021347
+      },
+      {
+        "image_path": "data/val/fake/419 (10).jpg",
+        "pred_prob": 0.04246903955936432
+      },
+      {
+        "image_path": "data/val/fake/642 (6).jpg",
+        "pred_prob": 0.3713182508945465
+      },
+      {
+        "image_path": "data/val/fake/393 (3).jpg",
+        "pred_prob": 0.40684443712234497
+      }
+    ]
+  },
+  "jpeg_compression_50": {
+    "false_positives": [
+      {
+        "image_path": "data/val/real/0240 (5).jpg",
+        "pred_prob": 0.9671480655670166
+      },
+      {
+        "image_path": "data/val/real/0405 (5).jpg",
+        "pred_prob": 0.5528693795204163
+      },
+      {
+        "image_path": "data/val/real/0821 (8).jpg",
+        "pred_prob": 0.5009403228759766
+      },
+      {
+        "image_path": "data/val/real/0924.jpg",
+        "pred_prob": 0.7074295282363892
+      },
+      {
+        "image_path": "data/val/real/0481 (2).jpg",
+        "pred_prob": 0.6042551398277283
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_path": "data/val/fake/578 (7).jpg",
+        "pred_prob": 0.37036824226379395
+      },
+      {
+        "image_path": "data/val/fake/858 (2).jpg",
+        "pred_prob": 0.2136661410331726
+      },
+      {
+        "image_path": "data/val/fake/80 (8).jpg",
+        "pred_prob": 0.18998633325099945
+      },
+      {
+        "image_path": "data/val/fake/920 (2).jpg",
+        "pred_prob": 0.007123421877622604
+      },
+      {
+        "image_path": "data/val/fake/837.jpg",
+        "pred_prob": 0.1629345715045929
+      }
+    ]
+  },
+  "jpeg_compression_30": {
+    "false_positives": [
+      {
+        "image_path": "data/val/real/0065.jpg",
+        "pred_prob": 0.7339381575584412
+      },
+      {
+        "image_path": "data/val/real/0944 (6).jpg",
+        "pred_prob": 0.6832995414733887
+      },
+      {
+        "image_path": "data/val/real/0405 (5).jpg",
+        "pred_prob": 0.5248724222183228
+      },
+      {
+        "image_path": "data/val/real/0221 (3).jpg",
+        "pred_prob": 0.6714912056922913
+      },
+      {
+        "image_path": "data/val/real/0821 (8).jpg",
+        "pred_prob": 0.5723541378974915
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_path": "data/val/fake/858 (2).jpg",
+        "pred_prob": 0.1749100238084793
+      },
+      {
+        "image_path": "data/val/fake/80 (8).jpg",
+        "pred_prob": 0.10373663157224655
+      },
+      {
+        "image_path": "data/val/fake/920 (2).jpg",
+        "pred_prob": 0.2621356248855591
+      },
+      {
+        "image_path": "data/val/fake/419 (10).jpg",
+        "pred_prob": 0.2932799160480499
+      },
+      {
+        "image_path": "data/val/fake/204 (8).jpg",
+        "pred_prob": 0.407512366771698
+      }
+    ]
+  },
+  "gaussian_blur_0.5": {
+    "false_positives": [
+      {
+        "image_path": "data/val/real/0618 (3).jpg",
+        "pred_prob": 0.933139443397522
+      },
+      {
+        "image_path": "data/val/real/0135 (3).jpg",
+        "pred_prob": 0.506692111492157
+      },
+      {
+        "image_path": "data/val/real/0625 (4).jpg",
+        "pred_prob": 0.8972736597061157
+      },
+      {
+        "image_path": "data/val/real/0529 (9).jpg",
+        "pred_prob": 0.6187792420387268
+      },
+      {
+        "image_path": "data/val/real/0920 (3).jpg",
+        "pred_prob": 0.9639761447906494
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_path": "data/val/fake/578 (7).jpg",
+        "pred_prob": 0.034678805619478226
+      },
+      {
+        "image_path": "data/val/fake/80 (8).jpg",
+        "pred_prob": 0.28714361786842346
+      },
+      {
+        "image_path": "data/val/fake/920 (2).jpg",
+        "pred_prob": 0.35671401023864746
+      },
+      {
+        "image_path": "data/val/fake/419 (10).jpg",
+        "pred_prob": 0.004163801670074463
+      },
+      {
+        "image_path": "data/val/fake/245 (7).jpg",
+        "pred_prob": 0.037779513746500015
+      }
+    ]
+  },
+  "gaussian_blur_1.0": {
+    "false_positives": [
+      {
+        "image_path": "data/val/real/0703.jpg",
+        "pred_prob": 0.8265944123268127
+      },
+      {
+        "image_path": "data/val/real/0464 (3).jpg",
+        "pred_prob": 0.8531427383422852
+      },
+      {
+        "image_path": "data/val/real/0405 (5).jpg",
+        "pred_prob": 0.6316235065460205
+      },
+      {
+        "image_path": "data/val/real/0221 (3).jpg",
+        "pred_prob": 0.5721291303634644
+      },
+      {
+        "image_path": "data/val/real/0157 (3).jpg",
+        "pred_prob": 0.8879906535148621
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_path": "data/val/fake/419 (10).jpg",
+        "pred_prob": 0.252267986536026
+      },
+      {
+        "image_path": "data/val/fake/393 (3).jpg",
+        "pred_prob": 0.1001000702381134
+      },
+      {
+        "image_path": "data/val/fake/829 (4).jpg",
+        "pred_prob": 0.43403035402297974
+      },
+      {
+        "image_path": "data/val/fake/888 (10).jpg",
+        "pred_prob": 0.4121144115924835
+      },
+      {
+        "image_path": "data/val/fake/993 (8).jpg",
+        "pred_prob": 0.4431050717830658
+      }
+    ]
+  },
+  "gaussian_blur_2.0": {
+    "false_positives": [
+      {
+        "image_path": "data/val/real/0073 (2).jpg",
+        "pred_prob": 0.7113053202629089
+      },
+      {
+        "image_path": "data/val/real/0703.jpg",
+        "pred_prob": 0.704839825630188
+      },
+      {
+        "image_path": "data/val/real/0240 (5).jpg",
+        "pred_prob": 0.7958472967147827
+      },
+      {
+        "image_path": "data/val/real/0464 (3).jpg",
+        "pred_prob": 0.889166533946991
+      },
+      {
+        "image_path": "data/val/real/0221 (3).jpg",
+        "pred_prob": 0.7945763468742371
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_path": "data/val/fake/920 (2).jpg",
+        "pred_prob": 0.06958535313606262
+      },
+      {
+        "image_path": "data/val/fake/941 (4).jpg",
+        "pred_prob": 0.1964988261461258
+      },
+      {
+        "image_path": "data/val/fake/393 (3).jpg",
+        "pred_prob": 0.15281060338020325
+      },
+      {
+        "image_path": "data/val/fake/172 (8).jpg",
+        "pred_prob": 0.3631444573402405
+      },
+      {
+        "image_path": "data/val/fake/993 (8).jpg",
+        "pred_prob": 0.379027783870697
+      }
+    ]
+  },
+  "resize_0.5": {
+    "false_positives": [
+      {
+        "image_path": "data/val/real/0703.jpg",
+        "pred_prob": 0.6845824122428894
+      },
+      {
+        "image_path": "data/val/real/0240 (5).jpg",
+        "pred_prob": 0.8259202241897583
+      },
+      {
+        "image_path": "data/val/real/0464 (3).jpg",
+        "pred_prob": 0.9440726041793823
+      },
+      {
+        "image_path": "data/val/real/0405 (5).jpg",
+        "pred_prob": 0.5797569155693054
+      },
+      {
+        "image_path": "data/val/real/0221 (3).jpg",
+        "pred_prob": 0.522559642791748
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_path": "data/val/fake/941 (4).jpg",
+        "pred_prob": 0.3989275097846985
+      },
+      {
+        "image_path": "data/val/fake/393 (3).jpg",
+        "pred_prob": 0.3430832624435425
+      },
+      {
+        "image_path": "data/val/fake/993 (8).jpg",
+        "pred_prob": 0.18847443163394928
+      },
+      {
+        "image_path": "data/val/fake/23 (2).jpg",
+        "pred_prob": 0.19092318415641785
+      },
+      {
+        "image_path": "data/val/fake/176.jpg",
+        "pred_prob": 0.28929710388183594
+      }
+    ]
+  },
+  "resize_0.25": {
+    "false_positives": [
+      {
+        "image_path": "data/val/real/0657 (4).jpg",
+        "pred_prob": 0.658856213092804
+      },
+      {
+        "image_path": "data/val/real/0073 (2).jpg",
+        "pred_prob": 0.5130482316017151
+      },
+      {
+        "image_path": "data/val/real/0703.jpg",
+        "pred_prob": 0.7531155347824097
+      },
+      {
+        "image_path": "data/val/real/0882 (2).jpg",
+        "pred_prob": 0.705934464931488
+      },
+      {
+        "image_path": "data/val/real/0240 (5).jpg",
+        "pred_prob": 0.8535478711128235
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_path": "data/val/fake/920 (2).jpg",
+        "pred_prob": 0.16516074538230896
+      },
+      {
+        "image_path": "data/val/fake/941 (4).jpg",
+        "pred_prob": 0.37447744607925415
+      },
+      {
+        "image_path": "data/val/fake/642 (6).jpg",
+        "pred_prob": 0.4712105095386505
+      },
+      {
+        "image_path": "data/val/fake/393 (3).jpg",
+        "pred_prob": 0.14418558776378632
+      },
+      {
+        "image_path": "data/val/fake/172 (8).jpg",
+        "pred_prob": 0.4104856252670288
+      }
+    ]
+  },
+  "gaussian_noise_0.02": {
+    "false_positives": [
+      {
+        "image_path": "data/val/real/0240 (5).jpg",
+        "pred_prob": 0.5839780569076538
+      },
+      {
+        "image_path": "data/val/real/0065.jpg",
+        "pred_prob": 0.952386736869812
+      },
+      {
+        "image_path": "data/val/real/0343 (9).jpg",
+        "pred_prob": 0.7733527421951294
+      },
+      {
+        "image_path": "data/val/real/0864 (5).jpg",
+        "pred_prob": 0.5085257291793823
+      },
+      {
+        "image_path": "data/val/real/0618 (3).jpg",
+        "pred_prob": 0.9137970805168152
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_path": "data/val/fake/441 (8).jpg",
+        "pred_prob": 0.4188700020313263
+      },
+      {
+        "image_path": "data/val/fake/578 (7).jpg",
+        "pred_prob": 0.07502854615449905
+      },
+      {
+        "image_path": "data/val/fake/80 (8).jpg",
+        "pred_prob": 0.29976919293403625
+      },
+      {
+        "image_path": "data/val/fake/920 (2).jpg",
+        "pred_prob": 0.2610967755317688
+      },
+      {
+        "image_path": "data/val/fake/419 (10).jpg",
+        "pred_prob": 0.16072896122932434
+      }
+    ]
+  },
+  "gaussian_noise_0.05": {
+    "false_positives": [
+      {
+        "image_path": "data/val/real/0240 (5).jpg",
+        "pred_prob": 0.9657142162322998
+      },
+      {
+        "image_path": "data/val/real/0065.jpg",
+        "pred_prob": 0.8847013115882874
+      },
+      {
+        "image_path": "data/val/real/0944 (6).jpg",
+        "pred_prob": 0.8271943926811218
+      },
+      {
+        "image_path": "data/val/real/0231 (3).jpg",
+        "pred_prob": 0.8427579402923584
+      },
+      {
+        "image_path": "data/val/real/0157 (3).jpg",
+        "pred_prob": 0.5480474233627319
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_path": "data/val/fake/578 (7).jpg",
+        "pred_prob": 0.4092658460140228
+      },
+      {
+        "image_path": "data/val/fake/80 (8).jpg",
+        "pred_prob": 0.17373497784137726
+      },
+      {
+        "image_path": "data/val/fake/920 (2).jpg",
+        "pred_prob": 0.3030420243740082
+      },
+      {
+        "image_path": "data/val/fake/419 (10).jpg",
+        "pred_prob": 0.2314973920583725
+      },
+      {
+        "image_path": "data/val/fake/204 (8).jpg",
+        "pred_prob": 0.33787354826927185
+      }
+    ]
+  },
+  "gaussian_noise_0.1": {
+    "false_positives": [
+      {
+        "image_path": "data/val/real/0240 (5).jpg",
+        "pred_prob": 0.5676340460777283
+      },
+      {
+        "image_path": "data/val/real/0065.jpg",
+        "pred_prob": 0.898695707321167
+      },
+      {
+        "image_path": "data/val/real/0944 (6).jpg",
+        "pred_prob": 0.8897070288658142
+      },
+      {
+        "image_path": "data/val/real/0231 (3).jpg",
+        "pred_prob": 0.9626189470291138
+      },
+      {
+        "image_path": "data/val/real/0486 (6).jpg",
+        "pred_prob": 0.6412555575370789
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_path": "data/val/fake/858 (2).jpg",
+        "pred_prob": 0.48800113797187805
+      },
+      {
+        "image_path": "data/val/fake/920 (2).jpg",
+        "pred_prob": 0.06152840703725815
+      },
+      {
+        "image_path": "data/val/fake/419 (10).jpg",
+        "pred_prob": 0.4617713689804077
+      },
+      {
+        "image_path": "data/val/fake/794 (2).jpg",
+        "pred_prob": 0.47334805130958557
+      },
+      {
+        "image_path": "data/val/fake/888 (10).jpg",
+        "pred_prob": 0.3514360189437866
+      }
+    ]
+  },
+  "color_jitter_0.2": {
+    "false_positives": [
+      {
+        "image_path": "data/val/real/0754 (8).jpg",
+        "pred_prob": 0.6531932950019836
+      },
+      {
+        "image_path": "data/val/real/0461.jpg",
+        "pred_prob": 0.5014130473136902
+      },
+      {
+        "image_path": "data/val/real/0085 (5).jpg",
+        "pred_prob": 0.9527723789215088
+      },
+      {
+        "image_path": "data/val/real/0618 (3).jpg",
+        "pred_prob": 0.8466454744338989
+      },
+      {
+        "image_path": "data/val/real/0111.jpg",
+        "pred_prob": 0.5030354857444763
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_path": "data/val/fake/578 (7).jpg",
+        "pred_prob": 0.11412636190652847
+      },
+      {
+        "image_path": "data/val/fake/419 (10).jpg",
+        "pred_prob": 0.28046098351478577
+      },
+      {
+        "image_path": "data/val/fake/642 (6).jpg",
+        "pred_prob": 0.3991364538669586
+      },
+      {
+        "image_path": "data/val/fake/393 (3).jpg",
+        "pred_prob": 0.23769813776016235
+      },
+      {
+        "image_path": "data/val/fake/603 (9).jpg",
+        "pred_prob": 0.4963688552379608
+      }
+    ]
+  },
+  "center_crop_0.8": {
+    "false_positives": [
+      {
+        "image_path": "data/val/real/0464 (3).jpg",
+        "pred_prob": 0.6758667230606079
+      },
+      {
+        "image_path": "data/val/real/0405 (5).jpg",
+        "pred_prob": 0.5973626375198364
+      },
+      {
+        "image_path": "data/val/real/0157 (3).jpg",
+        "pred_prob": 0.6260570287704468
+      },
+      {
+        "image_path": "data/val/real/0959 (8).jpg",
+        "pred_prob": 0.5152794122695923
+      },
+      {
+        "image_path": "data/val/real/0547 (6).jpg",
+        "pred_prob": 0.5570561289787292
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_path": "data/val/fake/578 (7).jpg",
+        "pred_prob": 0.41935741901397705
+      },
+      {
+        "image_path": "data/val/fake/80 (8).jpg",
+        "pred_prob": 0.22386182844638824
+      },
+      {
+        "image_path": "data/val/fake/920 (2).jpg",
+        "pred_prob": 0.11207161843776703
+      },
+      {
+        "image_path": "data/val/fake/419 (10).jpg",
+        "pred_prob": 0.14754292368888855
+      },
+      {
+        "image_path": "data/val/fake/204 (8).jpg",
+        "pred_prob": 0.4731614291667938
+      }
+    ]
+  }
+}

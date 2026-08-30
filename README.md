@@ -73,8 +73,20 @@ docs/       robustness summary and error analysis outputs
 
 ## Limitations & future work
 
-TODO: fill in after training runs -- e.g. which transforms hurt accuracy most, dataset gaps, false positive/negative patterns.
+Trained on CIFAKE (10k real COCO-style photos + 10k AI-generated, held out for validation), the small classifier head (frozen CLIP ViT-B/32 + 512->256->1) reaches 96.1% clean validation accuracy. Robustness against the hackathon's transform sweep (see `docs/robustness_summary.csv`):
+
+- **Most damaging**: aggressive downscaling (0.25x resize, -12.1pp), heavy blur (sigma=2.0, -9.2pp), and high sensor noise (sigma=0.10, -8.7pp). All three roughly compound in severity -- the model leans on fine-grained texture cues that these transforms destroy first.
+- **Most robust**: color jitter (+/-20%, -0.5pp) and light JPEG re-compression (q=90, -0.1pp) barely move accuracy -- these transforms preserve the high-frequency detail CLIP features seem to rely on.
+- **Middle ground**: moderate JPEG compression and blur degrade gracefully (a few points per severity step) rather than collapsing, suggesting the training-time random augmentation is helping but not fully closing the gap at the most severe settings.
+
+Representative false positive/negative examples per condition are in `docs/error_examples.json` for a closer look.
+
+**Dataset gaps**: only CIFAKE was used for training and evaluation. Its real images are low-resolution (32x32) COCO-style photos and its fakes come from one generator family, so the model hasn't been exposed to higher-resolution images, other generator architectures (diffusion vs. GAN), or more recent AIGC tools -- generalization to those is untested. SID_Set and WildFake were available but not incorporated; folding them in (per the README's data layout) is the highest-value next step.
+
+**Explainability**: the model currently outputs a single confidence score with no visual explanation of *why*. Given more time, a Grad-CAM-style saliency map over the CLIP features, or attention visualization, would help both debugging and the hackathon's explainability angle.
+
+**Other improvements given more time**: calibrate the output probabilities (predictions cluster near 0 and 1, which may not reflect true confidence); evaluate against stacked/compounded transforms rather than one at a time, closer to real-world redistribution; and test on images from AIGC generators not represented in CIFAKE to check generalization beyond the training distribution.
 
 ## Team contributions
 
-TODO.
+TODO: list team members and what each person worked on (data pipeline, model/training, robustness eval, writeup, etc.).

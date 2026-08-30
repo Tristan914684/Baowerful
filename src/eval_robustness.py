@@ -35,7 +35,7 @@ def evaluate(model, loader, device):
     false_pos, false_neg = [], []
     with torch.no_grad():
         for images, labels, paths in loader:
-            images, labels = images.to(device), labels.to(device)
+            images, labels = images.to(device), labels.to(device=device, dtype=torch.float32)
             probs = torch.sigmoid(model(images))
             preds = (probs > 0.5).float()
             correct += (preds == labels).sum().item()
