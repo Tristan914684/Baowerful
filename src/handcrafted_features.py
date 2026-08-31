@@ -45,6 +45,44 @@ to capture signal CLIP doesn't naturally encode:
    the RGB image directly, since converting to grayscale first would
    destroy the per-channel information needed to detect it.
 
+5. Local blur/sharpness inconsistency: features 2-3 above summarize
+   blur/texture as a SINGLE number for the whole image, which dilutes a
+   localized edit -- e.g. an inpainted or spliced region that was blended
+   with local smoothing, or composited from a differently-compressed
+   source, typically covers only part of the frame. A real, untouched
+   photo is usually fairly consistent in sharpness across regions (same
+   camera, lens, and moment everywhere), whereas a tampered region tends
+   to stand out as a patch with noticeably different high-frequency
+   detail than its surroundings. We tile the image into a small grid,
+   compute Laplacian variance (sharpness) independently per tile, and
+   summarize how much those tile-level values disagree with each other
+   (coefficient of variation): low = uniformly sharp/blurred everywhere
+   (real-like), high = one or more tiles stand out from the rest
+   (tamper-like).
+
+6. JPEG blockiness: real photos re-encoded through JPEG (or already
+   compressed at the source) develop a characteristic discontinuity at
+   8x8 DCT block boundaries -- pixel differences across block edges tend
+   to be larger, relative to differences *within* a block, than you'd get
+   from a smoothly-varying natural image region. AI generators don't
+   produce this block-grid artifact natively, so the ratio of
+   cross-block-boundary difference to within-block difference is a
+   structural (not sharpness-based) signal. This matters specifically
+   because our robustness eval includes JPEG re-compression at several
+   qualities plus blur/resize/noise -- sharpness-based features (2, 5)
+   degrade under those transforms, but blockiness is measuring grid
+   *structure*, so it degrades more gracefully.
+
+7. Resampling periodicity: generator upsampling stages (transposed
+   conv / interpolation stacks) often leave faint periodic structure in
+   the image's high-frequency residual, which shows up as a sharp peak
+   in the FFT magnitude of the Laplacian response. A real photo's
+   high-frequency residual is closer to unstructured sensor noise, so
+   its FFT magnitude doesn't have as strong a peak. Like blockiness, this
+   is a structural/periodic signal rather than a raw-sharpness one, so it
+   is comparatively more robust to blur/resize/JPEG than laplacian_var or
+   fft_highfreq_ratio alone.
+
 All features are computed on a fixed-size version of the image so they're
 comparable across images of different original resolutions. Uses only
 numpy/PIL -- no extra dependencies (no scipy/cv2 needed).
@@ -52,10 +90,11 @@ numpy/PIL -- no extra dependencies (no scipy/cv2 needed).
 import numpy as np
 from PIL import Image
 
-FEATURE_DIM = 7
+FEATURE_DIM = 10
 FEATURE_NAMES = [
     "grad_direction_entropy", "laplacian_var", "fft_highfreq_ratio", "grad_mag_std",
     "radial_falloff_r2", "radial_gradient_alignment", "channel_saturation_ratio",
+    "local_blur_inconsistency", "jpeg_blockiness", "resample_periodicity",
 ]
 
 _RESIZE = 224
@@ -97,9 +136,6 @@ def _grad_direction_entropy(gx: np.ndarray, gy: np.ndarray) -> float:
     """Entropy (normalized to [0, 1]) of a magnitude-weighted gradient-direction histogram."""
     magnitude = np.sqrt(gx ** 2 + gy ** 2)
     angle = np.arctan2(gy, gx)  # [-pi, pi]
-    # Only count edges with meaningful gradient magnitude -- flat regions
-    # (sky, backgrounds, AI-smoothed areas) have near-zero, noisy angles
-    # that would just add uninformative entropy.
     threshold = magnitude.mean() * 0.5
     mask = magnitude > threshold
     if not np.any(mask):
@@ -122,7 +158,7 @@ def _laplacian_var(arr: np.ndarray) -> float:
 _cy, _cx = _RESIZE // 2, _RESIZE // 2
 _yy, _xx = np.mgrid[0:_RESIZE, 0:_RESIZE]
 _dist = np.sqrt((_yy - _cy) ** 2 + (_xx - _cx) ** 2)
-_HIGH_FREQ_MASK = _dist > (min(_cy, _cx) * 0.5)  # precomputed once: image size is fixed at _RESIZE
+_HIGH_FREQ_MASK = _dist > (min(_cy, _cx) * 0.5)
 
 
 def _fft_highfreq_ratio(arr: np.ndarray) -> float:
@@ -133,20 +169,12 @@ def _fft_highfreq_ratio(arr: np.ndarray) -> float:
 
 
 _BOX3 = np.ones((3, 3), dtype=np.float32) / 9.0
-_YY, _XX = np.mgrid[0:_RESIZE, 0:_RESIZE]  # pixel coordinate grids, reused per image below
+_YY, _XX = np.mgrid[0:_RESIZE, 0:_RESIZE]
 _BRIGHT_PERCENTILE = 95
 _N_SMOOTH_PASSES = 4
 
 
 def _light_source_centroid(arr: np.ndarray):
-    """
-    Rough estimate of a single dominant "light source" location: the
-    intensity-weighted centroid of the brightest ~5% of pixels in a
-    heavily smoothed luminance map. Smoothing first avoids anchoring on a
-    single noisy hot pixel (e.g. a small bright highlight or sensor
-    speck) instead of the broad bright region a real light source or
-    generator's implied lighting would produce.
-    """
     smoothed = arr
     for _ in range(_N_SMOOTH_PASSES):
         smoothed = _conv3x3(smoothed, _BOX3)
@@ -161,14 +189,6 @@ def _light_source_centroid(arr: np.ndarray):
 
 
 def _radial_falloff_r2(arr: np.ndarray, cy: float, cx: float) -> float:
-    """
-    How well a simple linear fit of brightness vs. distance from the
-    estimated light-source centroid explains the image's luminance
-    (R^2, clamped to [0, 1]). A real scene's brightness pattern is shaped
-    by multiple surfaces/occluders and rarely reduces to one clean radial
-    trend, so this stays low. A generator implying one dominant light with
-    a smooth vignette-like falloff pushes this higher.
-    """
     dist = np.sqrt((_YY - cy) ** 2 + (_XX - cx) ** 2).ravel()
     lum = arr.ravel()
     d_mean, l_mean = dist.mean(), lum.mean()
@@ -187,16 +207,6 @@ def _radial_falloff_r2(arr: np.ndarray, cy: float, cx: float) -> float:
 
 
 def _radial_gradient_alignment(gx: np.ndarray, gy: np.ndarray, cy: float, cx: float) -> float:
-    """
-    Magnitude-weighted average alignment between each significant edge's
-    gradient direction and the radial direction from the estimated light
-    centroid to that pixel (0 = gradients unrelated to the centroid's
-    direction, i.e. scene-driven; 1 = gradients point straight
-    toward/away from the centroid, as a clean point-source falloff would
-    produce). Uses absolute cosine similarity since a radial falloff
-    produces gradients pointing either toward or away from the source
-    depending on sign, and both indicate the same "centric" pattern.
-    """
     magnitude = np.sqrt(gx ** 2 + gy ** 2)
     threshold = magnitude.mean() * 0.5
     mask = magnitude > threshold
@@ -215,36 +225,121 @@ def _radial_gradient_alignment(gx: np.ndarray, gy: np.ndarray, cy: float, cx: fl
     return float(np.average(cos_sim[mask], weights=magnitude[mask]))
 
 
-_SATURATION_EPS = 2.0 / 255.0  # "near" 0/255 tolerance, in [0,1]-normalized units
+_SATURATION_EPS = 2.0 / 255.0
 
 
 def _channel_saturation_ratio(rgb_arr: np.ndarray, eps: float = _SATURATION_EPS) -> float:
-    """
-    Fraction of pixels where ALL THREE channels sit at (or within `eps`
-    of) an extreme -- 0 or 255. Real camera photos almost never produce
-    this: Bayer demosaicing, sensor noise, and in-camera processing all
-    leave small nonzero spread across channels even in bright/saturated
-    regions. Flat, mathematically "pure" colors (pure red/green/blue,
-    pure black/white) show up far more in synthetic/rendered/AI content.
-    Fully vectorized (whole-array numpy ops) -- no per-pixel Python loop.
-    """
-    near_extreme = (rgb_arr <= eps) | (rgb_arr >= (1.0 - eps))  # (H, W, 3) bool
-    fully_saturated = near_extreme.all(axis=-1)                  # (H, W) bool
+    near_extreme = (rgb_arr <= eps) | (rgb_arr >= (1.0 - eps))
+    fully_saturated = near_extreme.all(axis=-1)
     return float(fully_saturated.mean())
+
+
+_BLUR_GRID = 4  # 4x4 = 16 tiles for local sharpness comparison
+_BLUR_TILE = _RESIZE // _BLUR_GRID
+
+
+def _local_blur_inconsistency(lap: np.ndarray, grid: int = _BLUR_GRID) -> float:
+    """
+    Coefficient of variation (std / mean) of Laplacian variance computed
+    independently per tile in a `grid` x `grid` split of the image.
+    `lap` is passed in (already computed by the caller) to avoid a
+    redundant convolution pass. Low value = sharpness is fairly uniform
+    across the image (typical of an untouched photo); high value = one or
+    more tiles have noticeably different sharpness than the rest
+    (consistent with a locally blurred/blended edit, or a patch
+    composited from a differently-compressed source).
+    """
+    tile = _RESIZE // grid
+    tile_vars = np.empty(grid * grid, dtype=np.float64)
+    idx = 0
+    for i in range(grid):
+        for j in range(grid):
+            patch = lap[i * tile:(i + 1) * tile, j * tile:(j + 1) * tile]
+            tile_vars[idx] = patch.var()
+            idx += 1
+    mean_v = tile_vars.mean()
+    if mean_v < 1e-8:
+        return 0.0
+    return float(tile_vars.std() / mean_v)
+
+
+_BLOCK_SIZE = 8  # standard JPEG DCT block size
+
+
+def _jpeg_blockiness(arr: np.ndarray, block: int = _BLOCK_SIZE) -> float:
+    """
+    Ratio of mean absolute pixel difference *across* 8x8 block boundaries
+    to mean absolute pixel difference *within* blocks (i.e. between
+    adjacent pixels generally). JPEG's block-based DCT quantization
+    introduces a small but characteristic discontinuity right at block
+    edges that isn't present in natural (non-block-quantized) gradients.
+    This is a structural/grid signal rather than a raw-sharpness one, so
+    unlike laplacian_var / fft_highfreq_ratio it degrades more gracefully
+    under blur, resize, and additional JPEG re-compression -- all of
+    which are part of the robustness eval this feature is meant to
+    survive.
+
+    Returns ~1.0 when block-boundary differences are indistinguishable
+    from interior differences (no blocking artifact); > 1.0 when
+    boundaries are noticeably more discontinuous than interior pixels
+    (blocking artifact present).
+    """
+    h, w = arr.shape
+    h_c, w_c = h - (h % block), w - (w % block)
+    if h_c < block * 2 or w_c < block * 2:
+        return 1.0
+    cropped = arr[:h_c, :w_c]
+
+    # Differences straddling a block boundary (vertical boundaries, i.e.
+    # column block-index changes) vs. all horizontal-neighbor differences.
+    v_edges = np.abs(cropped[:, block::block] - cropped[:, block - 1:-1:block])
+    v_inner = np.abs(cropped[:, 1:] - cropped[:, :-1])
+    # Same, for horizontal block boundaries (row block-index changes).
+    h_edges = np.abs(cropped[block::block, :] - cropped[block - 1:-1:block, :])
+    h_inner = np.abs(cropped[1:, :] - cropped[:-1, :])
+
+    if v_edges.size == 0 or h_edges.size == 0:
+        return 1.0
+
+    edge_mean = (v_edges.mean() + h_edges.mean()) / 2.0
+    inner_mean = (v_inner.mean() + h_inner.mean()) / 2.0 + 1e-8
+    return float(edge_mean / inner_mean)
+
+
+def _resample_periodicity(lap: np.ndarray) -> float:
+    """
+    Peak-to-mean ratio of the FFT magnitude spectrum of the Laplacian
+    (high-frequency residual). Generator upsampling stages (transposed
+    conv / repeated interpolation) tend to leave faint periodic structure
+    in the residual, which shows up as one or more sharp peaks in its
+    frequency spectrum; a real camera photo's high-frequency residual is
+    closer to unstructured noise, without a strong periodic peak. `lap`
+    is passed in (already computed by the caller) to avoid a redundant
+    convolution pass. Like jpeg_blockiness, this targets *structure*
+    rather than raw magnitude, so it holds up better than sharpness-only
+    features under blur/resize/JPEG/noise.
+    """
+    mag = np.abs(np.fft.fft2(lap))
+    mag[0, 0] = 0.0  # ignore the DC component
+    mean_v = mag.mean() + 1e-8
+    peak = mag.max()
+    return float(peak / mean_v)
 
 
 def compute_handcrafted_features(img: Image.Image) -> np.ndarray:
     """
     Returns a length-FEATURE_DIM float32 numpy array:
         [grad_direction_entropy, laplacian_var, fft_highfreq_ratio, grad_mag_std,
-         radial_falloff_r2, radial_gradient_alignment, channel_saturation_ratio]
+         radial_falloff_r2, radial_gradient_alignment, channel_saturation_ratio,
+         local_blur_inconsistency, jpeg_blockiness, resample_periodicity]
     """
     arr = _to_gray_array(img)
     gx, gy = _sobel_gradients(arr)
     magnitude = np.sqrt(gx ** 2 + gy ** 2)
 
     direction_entropy = _grad_direction_entropy(gx, gy)
-    lap_var = _laplacian_var(arr)
+    lap = _conv3x3(arr, _LAPLACIAN)
+    lap_var = float(lap.var())
     fft_ratio = _fft_highfreq_ratio(arr)
     grad_mag_std = float(magnitude.std())
 
@@ -255,8 +350,13 @@ def compute_handcrafted_features(img: Image.Image) -> np.ndarray:
     rgb_arr = _to_rgb_array(img)
     saturation_ratio = _channel_saturation_ratio(rgb_arr)
 
+    blur_inconsistency = _local_blur_inconsistency(lap)
+    blockiness = _jpeg_blockiness(arr)
+    periodicity = _resample_periodicity(lap)
+
     return np.array(
         [direction_entropy, lap_var, fft_ratio, grad_mag_std,
-         radial_r2, radial_alignment, saturation_ratio],
+         radial_r2, radial_alignment, saturation_ratio, blur_inconsistency,
+         blockiness, periodicity],
         dtype=np.float32,
     )

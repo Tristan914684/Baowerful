@@ -49,7 +49,13 @@ def main():
 
     device = get_device()
     ckpt = torch.load(args.checkpoint, map_location=device)
-    model = ClipAigcDetector(clip_model_name=ckpt["clip_model"], pretrained=ckpt["pretrained"]).to(device)
+    # lean_head is saved into the checkpoint by train.py, so the correct
+    # head shape (wide vs. lean) is always reconstructed automatically --
+    # no need to remember/pass a matching flag by hand here. Falls back to
+    # False (the original default) for checkpoints saved before this field
+    # existed.
+    model = ClipAigcDetector(clip_model_name=ckpt["clip_model"], pretrained=ckpt["pretrained"],
+                              lean_head=ckpt.get("lean_head", False)).to(device)
     model.trainable.load_state_dict(ckpt["trainable_state_dict"])
     model.eval()
 

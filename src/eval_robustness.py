@@ -5,7 +5,7 @@ the hackathon's robustness table (spec 5.2), and dumps sample false
 positives/negatives per condition for the error analysis writeup.
 
 Usage:
-    python -m src.eval_robustness --data_dir data/val --checkpoint results/head_best.pt
+    python -m src.eval_robustness --data_dir data/test --checkpoint results/head_best.pt
 
 data_dir must have the same real/ + fake/ layout as training data, and
 should be a held-out split the model has never trained on.
@@ -80,7 +80,13 @@ def main():
 
     device = get_device()
     ckpt = torch.load(args.checkpoint, map_location=device)
-    model = ClipAigcDetector(clip_model_name=ckpt["clip_model"], pretrained=ckpt["pretrained"]).to(device)
+    # lean_head is saved into the checkpoint by train.py, so the correct
+    # head shape (wide vs. lean) is always reconstructed automatically --
+    # no need to remember/pass a matching flag by hand here. Falls back to
+    # False (the original default) for checkpoints saved before this field
+    # existed.
+    model = ClipAigcDetector(clip_model_name=ckpt["clip_model"], pretrained=ckpt["pretrained"],
+                              lean_head=ckpt.get("lean_head", False)).to(device)
     model.trainable.load_state_dict(ckpt["trainable_state_dict"])
     model.eval()
 
