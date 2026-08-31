@@ -75,12 +75,35 @@ def main():
                          help="Cap training set size for a quick smoke test.")
     parser.add_argument("--max_val_samples", type=int, default=None,
                          help="Cap validation set size for a quick smoke test.")
+    parser.add_argument("--fresh", action="store_true",
+                         help="Ignore any existing checkpoint at --out and start from a randomly "
+                              "initialized head. Default behavior (no --fresh) resumes from --out "
+                              "if it already exists, and only overwrites it if a new epoch beats "
+                              "the val_acc saved in that checkpoint.")
     args = parser.parse_args()
 
     device = get_device()
     print(f"Using device: {device}")
 
     model = ClipAigcDetector(clip_model_name=args.clip_model, pretrained=args.pretrained).to(device)
+
+    best_val_acc = 0.0
+    if not args.fresh and Path(args.out).exists():
+        ckpt = torch.load(args.out, map_location=device)
+        if ckpt.get("clip_model") != args.clip_model or ckpt.get("pretrained") != args.pretrained:
+            print(f"  WARNING: existing checkpoint was trained with clip_model={ckpt.get('clip_model')!r}, "
+                  f"pretrained={ckpt.get('pretrained')!r}, but this run uses "
+                  f"clip_model={args.clip_model!r}, pretrained={args.pretrained!r}. "
+                  f"Skipping resume and starting fresh instead.")
+        else:
+            model.trainable.load_state_dict(ckpt["trainable_state_dict"])
+            best_val_acc = ckpt.get("val_acc", 0.0)
+            print(f"Resumed weights from {args.out} (existing val_acc={best_val_acc:.4f}). "
+                  f"Will only overwrite it if a new epoch beats this.")
+    elif args.fresh:
+        print("--fresh set: starting from a randomly initialized head (ignoring any existing checkpoint).")
+    else:
+        print(f"No existing checkpoint found at {args.out}; starting from a randomly initialized head.")
 
     train_ds = AigcImageDataset(
         args.train_dir,
@@ -103,7 +126,6 @@ def main():
 
     Path(args.out).parent.mkdir(parents=True, exist_ok=True)
     history = []
-    best_val_acc = 0.0
 
     for epoch in range(1, args.epochs + 1):
         train_loss, train_acc = run_epoch(model, train_loader, device, optimizer)
@@ -123,7 +145,17 @@ def main():
             }, args.out)
             print(f"  -> saved new best checkpoint ({val_acc:.4f}) to {args.out}")
 
-    with open("results/train_history.json", "w") as f:
+    history_path = Path("results/train_history.json")
+    if history_path.exists() and not args.fresh:
+        with open(history_path) as f:
+            prior_history = json.load(f)
+        # Re-number epochs so they continue counting across resumed runs
+        # instead of restarting at 1 and colliding with prior epoch numbers.
+        offset = prior_history[-1]["epoch"] if prior_history else 0
+        for h in history:
+            h["epoch"] += offset
+        history = prior_history + history
+    with open(history_path, "w") as f:
         json.dump(history, f, indent=2)
 
 
