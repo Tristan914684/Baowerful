@@ -16,12 +16,14 @@ import argparse
 import json
 from pathlib import Path
 
+import numpy as np
 import torch
 from PIL import Image
 from tqdm import tqdm
 
 from src.model import ClipAigcDetector
 from src.dataset import IMG_EXTENSIONS
+from src.handcrafted_features import compute_handcrafted_features
 
 
 def get_device():
@@ -47,8 +49,14 @@ def main():
 
     device = get_device()
     ckpt = torch.load(args.checkpoint, map_location=device)
-    model = ClipAigcDetector(clip_model_name=ckpt["clip_model"], pretrained=ckpt["pretrained"]).to(device)
-    model.head.load_state_dict(ckpt["head_state_dict"])
+    # lean_head is saved into the checkpoint by train.py, so the correct
+    # head shape (wide vs. lean) is always reconstructed automatically --
+    # no need to remember/pass a matching flag by hand here. Falls back to
+    # False (the original default) for checkpoints saved before this field
+    # existed.
+    model = ClipAigcDetector(clip_model_name=ckpt["clip_model"], pretrained=ckpt["pretrained"],
+                              lean_head=ckpt.get("lean_head", False)).to(device)
+    model.trainable.load_state_dict(ckpt["trainable_state_dict"])
     model.eval()
 
     image_paths = find_images(args.image_dir)
@@ -59,10 +67,11 @@ def main():
     with torch.no_grad():
         for i in tqdm(range(0, len(image_paths), args.batch_size)):
             batch_paths = image_paths[i:i + args.batch_size]
-            batch_imgs, valid_paths = [], []
+            batch_imgs, batch_handcrafted, valid_paths = [], [], []
             for p in batch_paths:
                 try:
                     img = Image.open(p).convert("RGB")
+                    batch_handcrafted.append(compute_handcrafted_features(img))
                     batch_imgs.append(model.preprocess(img))
                     valid_paths.append(p)
                 except Exception as e:
@@ -72,7 +81,8 @@ def main():
                 continue
 
             batch_tensor = torch.stack(batch_imgs).to(device)
-            probs = torch.sigmoid(model(batch_tensor)).cpu().tolist()
+            handcrafted_tensor = torch.from_numpy(np.stack(batch_handcrafted)).to(device)
+            probs = torch.sigmoid(model(batch_tensor, handcrafted_tensor)).cpu().tolist()
 
             for path, prob in zip(valid_paths, probs):
                 results.append({"image_path": str(path), "pred": round(prob, 6)})

@@ -5,7 +5,7 @@ the hackathon's robustness table (spec 5.2), and dumps sample false
 positives/negatives per condition for the error analysis writeup.
 
 Usage:
-    python -m src.eval_robustness --data_dir data/val --checkpoint results/head_best.pt
+    python -m src.eval_robustness --data_dir data/test --checkpoint results/head_best.pt
 
 data_dir must have the same real/ + fake/ layout as training data, and
 should be a held-out split the model has never trained on.
@@ -30,13 +30,31 @@ def get_device():
     return "cpu"
 
 
+class _SeverityAugment:
+    """
+    Picklable stand-in for the old `lambda img, f=..., s=...: f(img, s)`.
+    On Windows, DataLoader workers are spawned (not forked), so every
+    argument -- including the dataset's `augment` callable -- must be
+    pickled to hand off to the worker process. Lambdas can't be pickled;
+    a plain class with __call__ can.
+    """
+    def __init__(self, fn, severity):
+        self.fn = fn
+        self.severity = severity
+
+    def __call__(self, img):
+        return self.fn(img, self.severity)
+
+
 def evaluate(model, loader, device):
     correct, total = 0, 0
     false_pos, false_neg = [], []
     with torch.no_grad():
-        for images, labels, paths in loader:
-            images, labels = images.to(device), labels.to(device=device, dtype=torch.float32)
-            probs = torch.sigmoid(model(images))
+        for images, handcrafted, labels, paths in loader:
+            images = images.to(device)
+            handcrafted = handcrafted.to(device)
+            labels = labels.to(device=device, dtype=torch.float32)
+            probs = torch.sigmoid(model(images, handcrafted))
             preds = (probs > 0.5).float()
             correct += (preds == labels).sum().item()
             total += images.size(0)
@@ -56,19 +74,27 @@ def main():
     parser.add_argument("--num_workers", type=int, default=4)
     parser.add_argument("--out_csv", default="docs/robustness_summary.csv")
     parser.add_argument("--out_errors", default="docs/error_examples.json")
+    parser.add_argument("--max_samples", type=int, default=None,
+                         help="Cap each condition's evaluation set size (balanced across real/fake) for a quick smoke test.")
     args = parser.parse_args()
 
     device = get_device()
     ckpt = torch.load(args.checkpoint, map_location=device)
-    model = ClipAigcDetector(clip_model_name=ckpt["clip_model"], pretrained=ckpt["pretrained"]).to(device)
-    model.head.load_state_dict(ckpt["head_state_dict"])
+    # lean_head is saved into the checkpoint by train.py, so the correct
+    # head shape (wide vs. lean) is always reconstructed automatically --
+    # no need to remember/pass a matching flag by hand here. Falls back to
+    # False (the original default) for checkpoints saved before this field
+    # existed.
+    model = ClipAigcDetector(clip_model_name=ckpt["clip_model"], pretrained=ckpt["pretrained"],
+                              lean_head=ckpt.get("lean_head", False)).to(device)
+    model.trainable.load_state_dict(ckpt["trainable_state_dict"])
     model.eval()
 
     rows = []
     all_errors = {}
 
     # Clean baseline
-    ds = AigcImageDataset(args.data_dir, augment=None, preprocess=model.preprocess)
+    ds = AigcImageDataset(args.data_dir, augment=None, preprocess=model.preprocess, max_samples=args.max_samples)
     loader = DataLoader(ds, batch_size=args.batch_size, shuffle=False, num_workers=args.num_workers)
     acc, fp, fneg = evaluate(model, loader, device)
     rows.append({"transform": "clean", "severity": "-", "accuracy": round(acc, 4)})
@@ -78,22 +104,26 @@ def main():
     # Each transform x severity from the robustness table
     for name, (transform_fn, severities) in TRANSFORM_REGISTRY.items():
         for severity in severities:
-            augment = lambda img, f=transform_fn, s=severity: f(img, s)
-            ds = AigcImageDataset(args.data_dir, augment=augment, preprocess=model.preprocess)
+            augment = _SeverityAugment(transform_fn, severity)
+            ds = AigcImageDataset(args.data_dir, augment=augment, preprocess=model.preprocess,
+                                   max_samples=args.max_samples)
             loader = DataLoader(ds, batch_size=args.batch_size, shuffle=False, num_workers=args.num_workers)
             acc, fp, fneg = evaluate(model, loader, device)
             rows.append({"transform": name, "severity": severity, "accuracy": round(acc, 4)})
             all_errors[f"{name}_{severity}"] = {"false_positives": fp[:5], "false_negatives": fneg[:5]}
             print(f"{name} (severity={severity}): acc={acc:.4f}")
 
-    with open(args.out_csv, "w", newline="") as f:
-        writer = csv.DictWriter(f, fieldnames=["transform", "severity", "accuracy"])
-        writer.writeheader()
-        writer.writerows(rows)
-    print(f"Wrote robustness summary to {args.out_csv}")
+            # Write incrementally after every condition, so an interrupted
+            # run (Ctrl+C, crash, closed terminal) still leaves a partial
+            # CSV/JSON on disk instead of losing everything.
+            with open(args.out_csv, "w", newline="") as f:
+                writer = csv.DictWriter(f, fieldnames=["transform", "severity", "accuracy"])
+                writer.writeheader()
+                writer.writerows(rows)
+            with open(args.out_errors, "w") as f:
+                json.dump(all_errors, f, indent=2)
 
-    with open(args.out_errors, "w") as f:
-        json.dump(all_errors, f, indent=2)
+    print(f"Wrote robustness summary to {args.out_csv}")
     print(f"Wrote error examples to {args.out_errors}")
 
 
